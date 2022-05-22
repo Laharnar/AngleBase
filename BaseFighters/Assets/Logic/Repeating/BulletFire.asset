@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
+  m_Name: BulletFire
+  m_EditorClassIdentifier: 
+  oldName: InteractPref
+  interactions:
+  - enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self bulletSize = 0
+      codes:
+      - self action spawn bullet child_0
+      spawnSet: {fileID: 11400000, guid: fc6c598a2e9e0c240ad460239596b669, type: 2}
+      code: 
+  - enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self bulletSize = fat
+      codes:
+      - self action spawn bulletFat child_0
+      spawnSet: {fileID: 11400000, guid: fc6c598a2e9e0c240ad460239596b669, type: 2}
+      code: 
