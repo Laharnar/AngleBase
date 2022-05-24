@@ -10,17 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
-  m_Name: InitFlag2_Enemy
+  m_Name: Ore Collector Travel
   m_EditorClassIdentifier: 
   interactions:
-  - enabled: 1
+  - note: 
+    enabled: 1
     from: 
     to: 
     result: 
     action:
-      conditions: []
+      conditions:
+      - see self travel = free
       codes:
-      - self set flag 2
-      - self set enemyFlag 1
+      - set self travel ore
+      elseCodes: []
+      spawnSet: {fileID: 0}
+      code: 
+  - note: 
+    enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self travel = base
+      codes:
+      - self script SetTarget 0
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 

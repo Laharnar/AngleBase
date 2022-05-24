@@ -231,6 +231,8 @@ MonoBehaviour:
   triggerRules:
   - trigger: overlap
     rules: {fileID: 11400000, guid: d478e47eb7abc29448fb9e3a71ffaf06, type: 2}
+  - trigger: start
+    rules: {fileID: 11400000, guid: 3692f8244e12fa24eba598cab17bd451, type: 2}
 --- !u!114 &696614055737668957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,7 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 912c0f05de9ef9548b8dfa4b4ebbf417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoLoadGlobals: 0
+  autoLoadGlobals: 1
   storages: []
 --- !u!50 &696614055737668930
 Rigidbody2D:

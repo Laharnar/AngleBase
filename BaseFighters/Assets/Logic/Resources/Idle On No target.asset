@@ -10,17 +10,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
-  m_Name: InitFlag2_Enemy
+  m_Name: Idle On No target
   m_EditorClassIdentifier: 
   interactions:
-  - enabled: 1
+  - note: idle on no target
+    enabled: 1
     from: 
     to: 
     result: 
     action:
-      conditions: []
+      conditions:
+      - see self targets = 0
       codes:
-      - self set flag 2
-      - self set enemyFlag 1
+      - set self move = 0
+      elseCodes: []
+      spawnSet: {fileID: 0}
+      code: 
+  - note: move on target
+    enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self targets = 1
+      codes:
+      - set self move = 1
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 

@@ -19,6 +19,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8962264
       objectReference: {fileID: 0}
+    - target: {fileID: 5428473770575038290, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: logs.logSpawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: stored.items.Array.size
       value: 1
@@ -29,28 +33,56 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: stored.items.Array.data[0]._value
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: stored.items.Array.data[0]._svalue
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: triggerRules.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: triggerRules.Array.data[1].rules
       value: 
       objectReference: {fileID: 11400000, guid: a10f6ff3f38b6aa41b8409d85fa610af, type: 2}
     - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[2].rules
+      value: 
+      objectReference: {fileID: 11400000, guid: e49baf6890b4ac74c822458d7c60adea, type: 2}
+    - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[3].rules
+      value: 
+      objectReference: {fileID: 11400000, guid: 16d45485876715b4e8d0a014d7c4d1c7, type: 2}
+    - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: triggerRules.Array.data[1].trigger
       value: start
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[2].trigger
+      value: start
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[3].trigger
+      value: tick
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004083, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: state
       value: base
       objectReference: {fileID: 0}
+    - target: {fileID: 5428473771957004083, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: store
+      value: 
+      objectReference: {fileID: 7993954727808225705}
+    - target: {fileID: 5428473771957004083, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: module
+      value: 
+      objectReference: {fileID: 7993954727808225704}
+    - target: {fileID: 5428473771957004083, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: pickup
+      value: 
+      objectReference: {fileID: 7993954727808225711}
     - target: {fileID: 5428473771957004083, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: logs.logOverlap
       value: 0
@@ -61,11 +93,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.56
+      value: 7.77
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.49
+      value: 12.6
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -108,6 +140,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004086, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: autoLoadGlobals
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428473771957004086, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: storages.Array.size
       value: 0
       objectReference: {fileID: 0}
@@ -123,17 +159,95 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6570552873056254656, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: logs.logSpawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6570552873175483165, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: logs.logSpawn
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6570552874508661971, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: logs.logSpawn
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6696179664596325174, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+--- !u!114 &7993954727808225704 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+  m_PrefabInstance: {fileID: 2712833126628193945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993954727808225708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c788c6de82c3e89469bdee4b4cd685d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7993954727808225705 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+  m_PrefabInstance: {fileID: 2712833126628193945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993954727808225708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e80161fd3bd55541bc3afbde0920cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7993954727808225708 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5428473771957004085, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+  m_PrefabInstance: {fileID: 2712833126628193945}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2712833125011101541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993954727808225708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wasdIn: 0
+  raw: 0
+  stopOnLoss: 1
+  target: {fileID: 0}
+  stopDist: 0
+  pong: 0
+  correction: {x: 0, y: 0, z: 0}
+  correctionMult: 1
+  correctionDecay: 0
+  flatZ: 1
+  quadraticAccel: 0
+  preference: {x: 0, y: 0, z: 0}
+  move: {x: 0, y: 1, z: 0}
+  speed: 0.5
+  normalize: 1
+  moveSpace: 0
 --- !u!4 &7993954727808225709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
   m_PrefabInstance: {fileID: 2712833126628193945}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7993954727808225711 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5428473771957004086, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+  m_PrefabInstance: {fileID: 2712833126628193945}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7993954727808225708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 912c0f05de9ef9548b8dfa4b4ebbf417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9200049073994150631
 PrefabInstance:
   m_ObjectHideFlags: 0

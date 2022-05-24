@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
-  m_Name: ClearNullTargets_012
+  m_Name: EngineControl
   m_EditorClassIdentifier: 
   interactions:
   - note: 
@@ -19,14 +19,27 @@ MonoBehaviour:
     to: 
     result: 
     action:
-      conditions: []
+      conditions:
+      - see self move = 0
       codes:
-      - clear null targets
-      - clear null targets2
-      - clear null targets1
-      - clear null ore
-      - clear null bases1
-      - clear null bases2
+      - self disable script Move
+      - self disable script Aim
+      - self disable obj Engines
+      elseCodes: []
+      spawnSet: {fileID: 0}
+      code: 
+  - note: 
+    enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self move = 1
+      codes:
+      - self enable script Move
+      - self enable script Aim
+      - self enable obj Engines
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 

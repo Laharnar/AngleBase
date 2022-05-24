@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
-  m_Name: Ore Collector ToBase
+  m_Name: Base to Ore collector
   m_EditorClassIdentifier: 
-  oldName: InteractPref
   interactions:
-  - enabled: 1
+  - note: 
+    enabled: 1
     from: 
     to: 
     result: 
     action:
       conditions:
       - see target oreCollector = 1
+      - see target flag = see self flag
       codes:
       - transfer target self ore 9999
+      - set target travel free
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 

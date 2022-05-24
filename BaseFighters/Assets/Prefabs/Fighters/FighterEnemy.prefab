@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.4916458
+      value: -2.633676
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.5767733
+      value: 1.3765066
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.z
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Name
-      value: FighterEnemy (3)
+      value: FighterEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logTick
@@ -97,15 +97,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: close
-      value: 3.44
+      value: 2.74
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: outRadius
-      value: 5.66
+      value: 5.87
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: rngWeight
-      value: 2.82
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: rotationSpeed
@@ -113,7 +113,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6140353672293539740, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logStart
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6709032014797086837, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: scripts.items.Array.data[0].script

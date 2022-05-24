@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
   m_Name: BulletHitsFighter
   m_EditorClassIdentifier: 
-  oldName: InteractPref
   interactions:
-  - enabled: 1
+  - note: 
+    enabled: 1
     from: bullet
-    to: fighter
+    to: 
     result: bullet
     action:
       conditions:
@@ -24,9 +24,11 @@ MonoBehaviour:
       codes:
       - target add hp -1
       - self action destroy
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 
-  - enabled: 1
+  - note: 
+    enabled: 0
     from: bullet
     to: base
     result: bullet
@@ -36,5 +38,6 @@ MonoBehaviour:
       codes:
       - target add hp -1
       - self action destroy
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 
