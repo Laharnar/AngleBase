@@ -71,6 +71,8 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: ee594db34745b0d4a842286e74467adb, type: 2}
   - trigger: spawn
     rules: {fileID: 11400000, guid: 2676ceb405789a74cb0b08a0b51565e3, type: 2}
+  - trigger: start
+    rules: {fileID: 11400000, guid: 84a8dafc463ef6f47afd8c2e810acde6, type: 2}
 --- !u!114 &1187432033348906937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -87,8 +89,8 @@ MonoBehaviour:
   stored:
     items:
     - key: upgradePrice
-      value: 10
-      svalue: 
+      _value: 10
+      _svalue: 
   objects:
     items:
     - key: upgradeModule1
@@ -109,11 +111,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5a9d93214445f42906b8e0615697ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collider: {fileID: 0}
   state: spawnpt
   statics: []
   actions: []
   color: {fileID: 0}
   lastTime: 0
+  module: {fileID: 0}
+  pickup: {fileID: 0}
+  store: {fileID: 0}
   autoFresh: 1
   skipTimes: 0
   freshRate: 0.5

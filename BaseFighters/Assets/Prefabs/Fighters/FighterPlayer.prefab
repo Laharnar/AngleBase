@@ -239,6 +239,10 @@ PrefabInstance:
       propertyPath: triggerRules.Array.data[2].rules
       value: 
       objectReference: {fileID: 11400000, guid: 2676ceb405789a74cb0b08a0b51565e3, type: 2}
+    - target: {fileID: 1536571723541901197, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 7999988722287173372}
     - target: {fileID: 3363111493976457546, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: triggerRules.Array.data[2].rules
       value: 
@@ -258,6 +262,18 @@ PrefabInstance:
     - target: {fileID: 4256758221703602492, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: storages.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7192124719184145705, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: storages.Array.data[0]
@@ -300,3 +316,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7999988722287173372 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5787772065365347899, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+  m_PrefabInstance: {fileID: 4564371130257313991}
+  m_PrefabAsset: {fileID: 0}

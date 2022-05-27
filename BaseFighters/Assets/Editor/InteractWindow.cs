@@ -51,7 +51,7 @@ public class InteractWindow:EditorWindow{
 
                 if(!foldouts[i])
                     continue;
-                objs[i].InitAwake();
+                objs[i].ValidateComponents();
                 EditorGUI.indentLevel ++;
                 for (int j = 0; j < objs[i].module.triggerRules.Count; j++)
                 {
@@ -84,7 +84,7 @@ public class InteractWindow:EditorWindow{
             if(objs[i] == null)continue;
             if(objs[i].transform.parent != null){
                 count++;
-                EditorGUILayout.ObjectField(objs[i], typeof(InteractState));
+                EditorGUILayout.ObjectField(objs[i], typeof(InteractState), true);
             }
             if(count%3 == 0 && count > 0)
                 EditorGUILayout.Space();
