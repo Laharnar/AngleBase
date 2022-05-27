@@ -22,7 +22,7 @@ MonoBehaviour:
       conditions:
       - see self targets = 0
       codes:
-      - set self move = 0
+      - set self move 0
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 
@@ -35,7 +35,7 @@ MonoBehaviour:
       conditions:
       - see self targets = 1
       codes:
-      - set self move = 1
+      - set self move 1
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18194216, g: 0.2276266, b: 0.3074139, a: 1}
+  m_IndirectSpecularColor: {r: 0.46367025, g: 0.51441467, b: 0.5903628, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,39 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &163739715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 163739716}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &163739716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163739715}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1200928257}
+  - {fileID: 3142341665328549926}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &402790585
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,7 +222,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 163739716}
     m_Modifications:
     - target: {fileID: 574994462760604259, guid: 9bb1f960e67ed1146940a171c01b6ec1, type: 3}
       propertyPath: m_LightProbeUsage
@@ -282,6 +315,18 @@ PrefabInstance:
     - target: {fileID: 5748992555668977783, guid: 9bb1f960e67ed1146940a171c01b6ec1, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748992555668977783, guid: 9bb1f960e67ed1146940a171c01b6ec1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748992555668977783, guid: 9bb1f960e67ed1146940a171c01b6ec1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5748992555668977783, guid: 9bb1f960e67ed1146940a171c01b6ec1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5748992555668977783, guid: 9bb1f960e67ed1146940a171c01b6ec1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -383,7 +428,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 163739716}
     m_Modifications:
     - target: {fileID: 2223554081757637118, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
       propertyPath: GlobalObjectIdHash
@@ -470,6 +515,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8726940767603086691, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726940767603086691, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726940767603086691, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8726940767603086691, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -487,3 +544,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
+--- !u!4 &3142341665328549926 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8726940767603086691, guid: 51e441adcdf33e644a1d80cc61b8130b, type: 3}
+  m_PrefabInstance: {fileID: 3142341665328549925}
+  m_PrefabAsset: {fileID: 0}
