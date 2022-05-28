@@ -94,29 +94,39 @@ public class InteractWindow:EditorWindow{
                     continue;
                 obj.ValidateComponents();
                 EditorGUI.indentLevel ++;
-                for (int j = 0; j < obj.module.triggerRules.Count; j++)
+                var layers = obj.module.layers.layers;
+                for (int k = 0; k < layers.Count; k++)
                 {
-                    var rule = obj.module.triggerRules[j];
-                    if(!PrefixSearch(rule.rules.name, searchRule)) continue;
 
-                    EditorGUILayout.ObjectField(rule.rules, typeof(InteractRuleset), false);
-                    EditorGUILayout.LabelField(rule.trigger);
-                    EditorGUI.indentLevel ++;
-                    foreach (var action in rule.rules.interactions)
+                    EditorGUILayout.BeginHorizontal();
+                    EditorGUILayout.LabelField(layers[i].EditorLayer);
+                    layers[i].EditorEnabled = EditorGUILayout.Toggle(layers[i].EditorEnabled);
+                    EditorGUILayout.EndHorizontal();
+                    for (int j = 0; j < layers[k].EditorTriggers.Count; j++)
                     {
-                        if(action.note!= "")
-                            EditorGUILayout.LabelField($"<{action.note}");
-                        var draw = searchLine == "" 
-                        || ContainsSearch(action.action.conditions, searchLine)
-                        || ContainsSearch(action.action.codes, searchLine)
-                        || ContainsSearch(action.action.elseCodes, searchLine);
-                        if(draw){
-                            DrawItems(action.action.conditions, "if");
-                            DrawItems(action.action.codes, "do");
-                            DrawItems(action.action.elseCodes, "elsedo");
+                        var rule = layers[k].EditorTriggers[j];
+                        if (!PrefixSearch(rule.rules.name, searchRule)) continue;
+
+                        EditorGUILayout.ObjectField(rule.rules, typeof(InteractRuleset), false);
+                        EditorGUILayout.LabelField(rule.trigger);
+                        EditorGUI.indentLevel++;
+                        foreach (var action in rule.rules.interactions)
+                        {
+                            if (action.note != "")
+                                EditorGUILayout.LabelField($"<{action.note}");
+                            var draw = searchLine == ""
+                            || ContainsSearch(action.action.conditions, searchLine)
+                            || ContainsSearch(action.action.codes, searchLine)
+                            || ContainsSearch(action.action.elseCodes, searchLine);
+                            if (draw)
+                            {
+                                DrawItems(action.action.conditions, "if");
+                                DrawItems(action.action.codes, "do");
+                                DrawItems(action.action.elseCodes, "elsedo");
+                            }
                         }
+                        EditorGUI.indentLevel--;
                     }
-                    EditorGUI.indentLevel --;
                 }
                 count++;
                 EditorGUI.indentLevel --;

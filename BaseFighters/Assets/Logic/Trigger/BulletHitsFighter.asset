@@ -21,6 +21,7 @@ MonoBehaviour:
     action:
       conditions:
       - see target flag != see self flag
+      - see target state != bullet
       codes:
       - target add hp -1
       - self action destroy

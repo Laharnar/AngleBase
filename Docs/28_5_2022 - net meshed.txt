@@ -1,0 +1,65 @@
+many game modes -> MGM
+so hard to kill -> reduce hp -> MGM game multiobj initializer
+why do they chase me all the time -> solo hunter + leader of non solo hunters = worth more
+what do i even do. i only collect ore. kill enemies? meh. explore?. just game, find fun for yourself. that's dark souls.
+
+no challenge, nothing to think about -> fine, can be upgraded
+base could have shields, i would have to time -> yup, autonomous shields
+map is so small, it could have actual walls -> or walls could expand
+driving drones? revolt
+character is bs. pilots would be nice.
+bullets are hard to see -> color
+random map artefacts
+collector doesn't acually serve it's purpose to be target or to def -> map size?
+i can't win, no ui
+multiplayer doesn't work -> important
+fire actually looks good, if it had some variation and delays...
+
+generate map as you fly. place walls. drill. stored in prefab.
+ill need external data instead of prefabs if i want to share them
+
+optimize net with pos aims for rotation and grid cells for pos
+streaming assets could have prefabs, and prefab to link them. -> game mode
+refill?
+hit counter for score
+destruction mode
+
+summary
+
+multiplay 2p -> important. player spawns, player sync
+online edit will require files to be edited, up/downloaded, added to project -> meta.txt -> A pref alternative B made with unity, uploaded to store, imported midgame and stored locally
+multiple project setups with different unit setups so that i don't lose previous setup
+community, youtube.
+small stuff, see bullets, fighters should be balanced
+more modes
+
+mode ideas
+
+hit counter for score
+destruction mode
+infinite expand walls exploration mode
+100 player mode
+collector only mode
+fighter only
+
+impl layers:-----------:
+
+rule box -> copies all rules to called, then erases itself. maybe loaded in layer instead to be erasable -> rule layers
+layers would also give ai. prefab layers instead of string layers? both?
+string layers exist = rule
+
+i want to be able to add and remove block of logic, and disable and enable them as i wish
+
+layer: enable/disable, has updatable trigger list
+ruleboxPref: has layers
+layers: list of layers
+module has ruleboxPref list. at runtime it's loaded into module layer
+module has one layers obj
+layer should be activatable by script to allow ai switches
+
+
+impl 2p: ----------------:
+spawn 2 players -> register ship as player, spawn pos?
+
+small stuff ------------:
+bullet visibility on 2 backgrounds

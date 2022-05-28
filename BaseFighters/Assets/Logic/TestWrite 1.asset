@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
-  m_Name: Ore Collector Travel
+  m_Name: TestWrite 1
   m_EditorClassIdentifier: 
   interactions:
   - note: 
@@ -19,23 +19,9 @@ MonoBehaviour:
     to: 
     result: 
     action:
-      conditions:
-      - see self travel = free
+      conditions: []
       codes:
-      - set self travel ore
-      elseCodes: []
-      spawnSet: {fileID: 0}
-      code: 
-  - note: 
-    enabled: 1
-    from: 
-    to: 
-    result: 
-    action:
-      conditions:
-      - see self travel = base
-      codes:
-      - self script SetTarget bases 0
+      - set self tes1t 2
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 

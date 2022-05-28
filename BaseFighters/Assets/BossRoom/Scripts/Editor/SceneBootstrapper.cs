@@ -116,8 +116,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Editor
                 return;
             }
 
+            Debug.Log("On play state changes");
             if (obj == PlayModeStateChange.ExitingEditMode)
             {
+                Debug.Log("Inject");
                 // cache previous scene so we return to this scene after play session, if possible
                 PreviousScene = EditorSceneManager.GetActiveScene().path;
 
@@ -141,6 +143,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Editor
                             EditorApplication.ExitPlaymode();
 
                             // scene is included in build settings; open it
+                            Debug.Log("Bootstrap preload.");
                             EditorSceneManager.OpenScene(BootstrapScene);
 
                             EditorApplication.EnterPlaymode();
@@ -160,6 +163,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Editor
             {
                 if (!string.IsNullOrEmpty(PreviousScene))
                 {
+                    Debug.Log("bootstrap load enterededitmode "+PreviousScene);
                     EditorSceneManager.OpenScene(PreviousScene);
                 }
             }
