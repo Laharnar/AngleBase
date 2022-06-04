@@ -28,17 +28,3 @@ MonoBehaviour:
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 
-  - note: 
-    enabled: 0
-    from: bullet
-    to: base
-    result: bullet
-    action:
-      conditions:
-      - see target flag != see self flag
-      codes:
-      - target add hp -1
-      - self action destroy
-      elseCodes: []
-      spawnSet: {fileID: 0}
-      code: 

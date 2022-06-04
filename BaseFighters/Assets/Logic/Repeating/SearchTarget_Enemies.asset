@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
   m_Name: SearchTarget_Enemies
   m_EditorClassIdentifier: 
-  oldName: InteractPref
   interactions:
-  - enabled: 1
+  - note: mode = hunt solo monopolized
+    enabled: 1
     from: 
     to: 
     result: 
@@ -24,9 +24,11 @@ MonoBehaviour:
       - see self targets = 0
       codes:
       - transfer 1 globals {targets+see self enemyFlag} self targets
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 
-  - enabled: 1
+  - note: mode = hunt unrestricted
+    enabled: 1
     from: 
     to: 
     result: 
@@ -36,9 +38,11 @@ MonoBehaviour:
       - see self targets = 0
       codes:
       - copyAdd 1 globals {targets+see self enemyFlag} self targets
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 
-  - enabled: 1
+  - note: clear nulls in targets
+    enabled: 1
     from: 
     to: 
     result: 
@@ -46,9 +50,11 @@ MonoBehaviour:
       conditions: []
       codes:
       - clear null targets reduce targets
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 
-  - enabled: 1
+  - note: update target in scripts
+    enabled: 1
     from: 
     to: 
     result: 
@@ -57,5 +63,6 @@ MonoBehaviour:
       - see self targets > 0
       codes:
       - self script SetTarget self targets 0
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 

@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696614055642600643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.039574075}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,11 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5a9d93214445f42906b8e0615697ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   state: ore
   statics: []
-  actions: []
   color: {fileID: 0}
-  lastTime: 0
+  module: {fileID: 0}
+  pickup: {fileID: 0}
+  store: {fileID: 0}
   autoFresh: 0
   skipTimes: 0
   freshRate: 0.5
@@ -226,13 +228,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788c6de82c3e89469bdee4b4cd685d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRules: {fileID: 0}
-  timedRules: {fileID: 0}
+  layers:
+    layers: []
+  boxes: []
   triggerRules:
   - trigger: overlap
     rules: {fileID: 11400000, guid: d478e47eb7abc29448fb9e3a71ffaf06, type: 2}
   - trigger: start
     rules: {fileID: 11400000, guid: 3692f8244e12fa24eba598cab17bd451, type: 2}
+  overlapRules: {fileID: 0}
+  timedRules: {fileID: 0}
 --- !u!114 &696614055737668957
 MonoBehaviour:
   m_ObjectHideFlags: 0

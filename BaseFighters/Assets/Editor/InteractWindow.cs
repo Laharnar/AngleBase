@@ -94,38 +94,19 @@ public class InteractWindow:EditorWindow{
                     continue;
                 obj.ValidateComponents();
                 EditorGUI.indentLevel ++;
-                var layers = obj.module.layers.layers;
+                var layers = obj.module.CreateBox().layers;
                 for (int k = 0; k < layers.Count; k++)
                 {
-
+					var layer = layers[k];
                     EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField(layers[i].EditorLayer);
-                    layers[i].EditorEnabled = EditorGUILayout.Toggle(layers[i].EditorEnabled);
+                    EditorGUILayout.LabelField(layer.EditorLayer, GUILayout.Width(100));
+                    layer.EditorEnabled = EditorGUILayout.Toggle("", layer.EditorEnabled, GUILayout.Width(20));
                     EditorGUILayout.EndHorizontal();
-                    for (int j = 0; j < layers[k].EditorTriggers.Count; j++)
+                    for (int j = 0; j < layer.EditorTriggers.Count; j++)
                     {
-                        var rule = layers[k].EditorTriggers[j];
+                        var rule = layer.EditorTriggers[j];
                         if (!PrefixSearch(rule.rules.name, searchRule)) continue;
-
-                        EditorGUILayout.ObjectField(rule.rules, typeof(InteractRuleset), false);
-                        EditorGUILayout.LabelField(rule.trigger);
-                        EditorGUI.indentLevel++;
-                        foreach (var action in rule.rules.interactions)
-                        {
-                            if (action.note != "")
-                                EditorGUILayout.LabelField($"<{action.note}");
-                            var draw = searchLine == ""
-                            || ContainsSearch(action.action.conditions, searchLine)
-                            || ContainsSearch(action.action.codes, searchLine)
-                            || ContainsSearch(action.action.elseCodes, searchLine);
-                            if (draw)
-                            {
-                                DrawItems(action.action.conditions, "if");
-                                DrawItems(action.action.codes, "do");
-                                DrawItems(action.action.elseCodes, "elsedo");
-                            }
-                        }
-                        EditorGUI.indentLevel--;
+                        DrawRule(rule);
                     }
                 }
                 count++;
@@ -152,6 +133,34 @@ public class InteractWindow:EditorWindow{
         }
 
         EditorGUILayout.EndScrollView();
+    }
+
+    private void DrawRule(InteractTrigger rule)
+    {
+		
+        EditorGUI.indentLevel++;
+		EditorGUILayout.BeginHorizontal();
+        EditorGUILayout.LabelField(rule.trigger, GUILayout.Width(200));
+        EditorGUILayout.ObjectField(rule.rules, typeof(InteractRuleset), false);
+		EditorGUILayout.EndHorizontal();
+        EditorGUI.indentLevel++;
+        foreach (var action in rule.rules.interactions)
+        {
+            var draw = searchLine == ""
+            || ContainsSearch(action.action.conditions, searchLine)
+            || ContainsSearch(action.action.codes, searchLine)
+            || ContainsSearch(action.action.elseCodes, searchLine);
+            if (draw)
+            {
+				if (action.note != "")
+					EditorGUILayout.LabelField($"# {action.note}");
+                DrawItems(action.action.conditions, "if");
+                DrawItems(action.action.codes, "do");
+                DrawItems(action.action.elseCodes, "elsedo");
+            }
+        }
+        EditorGUI.indentLevel--;
+        EditorGUI.indentLevel--;
     }
 
     bool PrefixSearch(string longName, string search){

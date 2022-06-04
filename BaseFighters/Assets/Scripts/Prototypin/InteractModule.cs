@@ -61,25 +61,18 @@ public class InteractBox
                 return;
             }
         }
-        InteractLayer layer ;
-        layers.Add(layer = new InteractLayer(){
-            enabled = true,
-            layer = add.layer,
-            triggers= new List<InteractTrigger>()
-        });
-        layer.Add(add.triggers);
+		layers.Add(add);
     }
 
     /// <summary>
     /// Adds this to other where layers match.
     /// </summary>
     /// <param name="other"></param>
-    public void Join(InteractBox other)
+    public void JoinInto(InteractBox other)
     {
         foreach (var item in layers)
         {
             if(item == null) continue;
-            bool added = false;
             other.Add(item);
         }
     }
@@ -120,26 +113,36 @@ public class InteractModule : MonoBehaviour
     [SerializeField] InteractRuleset overlapRules; // trigger rules
     [SerializeField] InteractRuleset timedRules;
 
-    public List<InteractTrigger> EditorTriggerRules => triggerRules;
 
     void Awake()
     {
-        foreach (var item in boxes)
-            item.box.Join(layers);
-        layers.Get("base").Add(triggerRules);
+        layers = CreateBox();
         triggerRules.Clear();
     }
 
-    public List<InteractModule.InteractRules> GetRules(string trigger){
-        List<InteractModule.InteractRules> interactions = new List<InteractModule.InteractRules>();
+    /// <summary>
+    /// Note that this is recreated for every call.
+    /// </summary>
+    public InteractBox CreateBox()
+    {
+        InteractBox temp = new InteractBox();
+        foreach (var item in boxes)
+            item.box.JoinInto(temp);
+        // unique local load for current version.
+        temp.Get("base").Add(triggerRules);
+        layers.JoinInto(temp);
+        return temp;
+    }
+
+    public List<InteractRules> GetRules(string trigger){
+        List<InteractRules> interactions = new List<InteractRules>();
         foreach (var item in layers.layers){
-            if(item.enabled){
-                var triggers = item.triggers;
-                for (int i = 0; i < triggers.Count; i++)
-                {
-                    if(triggers[i].trigger == trigger && triggers[i].rules != null){
-                        interactions.AddRange(triggers[i].rules.interactions);
-                    }
+            if(!item.enabled) continue;
+            var triggers = item.triggers;
+            for (int i = 0; i < triggers.Count; i++)
+            {
+                if(triggers[i].trigger == trigger && triggers[i].rules != null){
+                    interactions.AddRange(triggers[i].rules.interactions);
                 }
             }
         }

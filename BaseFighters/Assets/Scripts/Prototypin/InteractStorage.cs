@@ -28,7 +28,7 @@ public class InteractStorage:MonoBehaviour{
 		}
 	}
 
-	///Finds correct storage based on source ("self", "target", "parent")
+	///Finds correct storage based on source ("self", "target", "parent", "script+name", "obj+name", "anyparent", "parent")
 	static InteractStorage Redirect(string source, InteractAction action, List<InteractStorage> storages = null){
 		var flexSource = source;
 		if(source == "self") // else is important here
@@ -51,6 +51,12 @@ public class InteractStorage:MonoBehaviour{
 		}
 		else if(source == "spawnBy"){
 			return action.self.spawnBy.store;
+		}else if(source.Contains('+')){
+			var items = source.Split("+");
+			if(items[0] == "script")
+				return (InteractStorage)action.self.store.scripts[items[1]].script;
+			else if(items[0] == "obj")
+				return action.self.store.objects[items[1]].prefab.GetComponent<InteractStorage>();
 		}
 		
 		if(storages != null){
@@ -283,10 +289,31 @@ public class InteractStorage:MonoBehaviour{
 		}
 		#endregion actions
 		#region setter
+		// standard setter : set reference1 op value_OR_valueAtReference2
 		else if (items.Length == 4 && items[0]== "set"){
 			var command = items[0];
 			// set source prop value
 			SetValue(items[1], items[2], items[3], action, storages);
+			return true;
+		}else if(items.Length == 8 && items[0] == "set"){
+			
+			KeyScript GetReference(string[] items, ref int id){
+				var storage = Redirect(items[id], action, storages); id++;
+				var typ = items[id]; id++;
+				if (typ == "script"){
+					var script = storage.scripts[items[id]]; id++;
+					return script;
+				}
+				Debug.LogError($"Unsupposerted {typ}");
+				return null;
+			}
+			
+			// set self script Move = self script AiMove
+			int id = 1;
+			var ref1 = GetReference(items, ref id);
+			var op = items[id++];
+			var ref2 = GetReference(items, ref id);
+			ref1.script = ref2.script;
 			return true;
 		}
 		else if (items.Length == 4 || (items.Length == 6 && items[3] == "see")/*redirects second part*/){
@@ -319,6 +346,7 @@ public class InteractStorage:MonoBehaviour{
 			else if(command == "enable"){
 				var objects = storage.objects;
 				var scripts = storage.scripts;
+				var module = storage.state.module;
 				if(prop == "obj"){
 					if(log)
 						Debug.Log($"Enable code: {code} {value} {storage} '{objects[value]}'", action.self);
@@ -328,10 +356,13 @@ public class InteractStorage:MonoBehaviour{
 				}
 				else if(prop == "script")
 					((Behaviour)scripts[value].script).enabled = true;
+				else if(prop == "layer")
+					module.layers.Get(value).enabled = true;
 			}
 			else if(command == "disable"){
 				var objects = storage.objects;
 				var scripts = storage.scripts;
+				var module = storage.state.module;
 				if(log)
 					Debug.Log($"Disable code: {code}", action.self);
 				if(prop == "obj")
@@ -342,6 +373,8 @@ public class InteractStorage:MonoBehaviour{
 					if(value == "Rigidbody2D")
 						((Rigidbody2D)scripts[value].script).gravityScale = 0;
 				}
+				else if(prop == "layer")
+					module.layers.Get(value).enabled = true;
 			}else return false;
 			return true;
 		}
@@ -586,7 +619,7 @@ public class InteractStorage:MonoBehaviour{
 			else if(storages[i].key == name)
 				return storages[i];
 		}
-		if(name =="global" ||name =="globals")
+		if(name == "global" || name == "globals")
 			Debug.Log("If crash, from global, activate auto global on object.", t);
 		return null;
 	}

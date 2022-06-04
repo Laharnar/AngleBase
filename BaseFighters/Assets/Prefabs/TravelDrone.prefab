@@ -97,6 +97,7 @@ MonoBehaviour:
   perStep: 1
   move: {fileID: 4886364297324029155}
   gizmos: 1
+  gizmosCol: {r: 0.5, g: 0.5, b: 0.5, a: 1}
 --- !u!114 &4886364297324029155
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109,17 +110,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  networked: 1
   wasdIn: 0
   raw: 0
+  stopOnLoss: 1
   target: {fileID: 0}
-  pong: 1
+  stopDist: 0
+  pong: 0
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 0.77
   correctionDecay: 0.16
+  flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}
-  move: {x: 0, y: 1, z: 0}
+  move: {x: 0, y: 0, z: 0}
   speed: 3
   normalize: 1
   moveSpace: 0
-  accelerate: 0

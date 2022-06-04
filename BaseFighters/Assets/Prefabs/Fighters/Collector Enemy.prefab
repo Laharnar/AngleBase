@@ -7,6 +7,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 281962229903564016, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
+      propertyPath: moveSpace
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 281962229903564016, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
+      propertyPath: correctionDecay
+      value: 0.241
+      objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396257, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: collider
       value: 
@@ -28,6 +36,10 @@ PrefabInstance:
       value: 0.806
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396258, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
+      propertyPath: self
+      value: 
+      objectReference: {fileID: 6112352938479817729}
+    - target: {fileID: 1556527903171396258, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: rngWeight
       value: 0.04
       objectReference: {fileID: 0}
@@ -37,7 +49,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396259, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: speed
-      value: 2.1
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396266, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: m_Name
@@ -120,6 +132,10 @@ PrefabInstance:
       value: Aim
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396270, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
+      propertyPath: stored.items.Array.data[0]._value
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556527903171396270, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: objects.items.Array.data[0].prefab
       value: 
       objectReference: {fileID: 3102705018245099396}
@@ -135,6 +151,10 @@ PrefabInstance:
       propertyPath: scripts.items.Array.data[2].script
       value: 
       objectReference: {fileID: 6112352938479817742}
+    - target: {fileID: 1556527903171396270, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
+      propertyPath: stored.items.Array.data[0]._svalue
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396270, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: stored.items.Array.data[1]._svalue
       value: free
@@ -232,6 +252,11 @@ PrefabInstance:
 --- !u!4 &3102705018245099396 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7657685874770344232, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
+  m_PrefabInstance: {fileID: 4704737126596761260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6112352938479817729 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1556527903171396269, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
   m_PrefabInstance: {fileID: 4704737126596761260}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &6112352938479817734 stripped

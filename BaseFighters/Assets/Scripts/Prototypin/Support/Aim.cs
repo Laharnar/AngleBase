@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Aim : MonoBehaviour, ITFunc
 {
+	public Transform self;
     [Header("mode 1 - mouse")]
     public bool mouse = false;
     [Header("mode 2 - target")]
@@ -24,7 +25,9 @@ public class Aim : MonoBehaviour, ITFunc
     float lastReset;
 
     void Start(){
-        aimAt = transform.position + transform.up;
+		if(self == null)
+			self = transform;
+        aimAt = self.position + self.up;
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class Aim : MonoBehaviour, ITFunc
         }
         if(aim){
             var rSpeed = rotationSpeed;
-            Vector2 targetDir = aimAt - transform.position;
+            Vector2 targetDir = aimAt - self.position;
             if(autoTrack){
                 float sum = Mathf.Abs(targetDir.x) + Mathf.Abs(targetDir.y);
                 
@@ -69,29 +72,30 @@ public class Aim : MonoBehaviour, ITFunc
                 }
             }
 
-            lastPos = (Vector2)transform.position + targetDir;
+            lastPos = (Vector2)self.position + targetDir;
             var targetRot = Quaternion.LookRotation(Vector3.forward, targetDir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, rSpeed/100f);
+            self.rotation = Quaternion.Slerp(self.rotation, targetRot, rSpeed/100f);
         }
     }
 
     void OnDrawGizmosSelected(){
+		if(self == null)self = transform;
         if(!Application.isPlaying){
             if(autoTrack){
-                Gizmos.DrawWireSphere(transform.position, close);
+                Gizmos.DrawWireSphere(self.position, close);
                 Gizmos.color = Color.gray;
-                Gizmos.DrawWireSphere(transform.position, outRadius);
+                Gizmos.DrawWireSphere(self.position, outRadius);
                 Gizmos.color = Color.red;
-                Gizmos.DrawWireSphere(transform.position, 0.5f);
+                Gizmos.DrawWireSphere(self.position, 0.5f);
                 Gizmos.color = Color.yellow;
-                Gizmos.DrawWireSphere(transform.position, 0.45f);
+                Gizmos.DrawWireSphere(self.position, 0.45f);
             }
             return;
         }
         if(autoTrack){
-            Gizmos.DrawWireSphere(transform.position, close);
+            Gizmos.DrawWireSphere(self.position, close);
             Gizmos.color = Color.gray;
-            Gizmos.DrawWireSphere(transform.position, outRadius);
+            Gizmos.DrawWireSphere(self.position, outRadius);
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(aimAt, 0.5f);
             Gizmos.color = Color.yellow;

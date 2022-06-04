@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.633676
+      value: 6.37
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3765066
+      value: 10.3
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.z
@@ -29,15 +29,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769619, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: stored.items.Array.data[0]._value
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769619, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: stored.items.Array.data[2]._value
@@ -72,12 +72,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5942315417640905280}
     - target: {fileID: 225920028382769619, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: stored.items.Array.data[0]._svalue
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769619, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: stored.items.Array.data[2]._svalue
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Name
-      value: FighterEnemy
+      value: FighterEnemy (5)
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logTick
@@ -85,7 +89,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769630, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: speed
-      value: 4.33
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769630, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: accelerate
@@ -93,23 +97,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: damp
-      value: 0.051
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: close
-      value: 2.74
+      value: 2.27
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: outRadius
-      value: 5.87
+      value: 5.8
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: rngWeight
-      value: 4
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: rotationSpeed
-      value: 37.97
+      value: 37.41
       objectReference: {fileID: 0}
     - target: {fileID: 6140353672293539740, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logStart
