@@ -19,3 +19,5 @@ MonoBehaviour:
     prefab: {fileID: 4810524730695877165, guid: ef8beaa39cda21c4bb5fe9b1e27e2af7, type: 3}
   - key: bulletThin
     prefab: {fileID: 2722773573839305628, guid: 17311e9b331ad684e978e5bfa3dd79b7, type: 3}
+  - key: shields
+    prefab: {fileID: 4664794444659365783, guid: 8f5bd086da6042741a43401ae174d608, type: 3}

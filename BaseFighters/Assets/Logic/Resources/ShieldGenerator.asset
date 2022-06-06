@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57e5b32452d56f4fbe6851f30969549, type: 3}
+  m_Name: ShieldGenerator
+  m_EditorClassIdentifier: 
+  box:
+    layers:
+    - layer: shields
+      enabled: 1
+      triggers:
+      - trigger: timed shields
+        rules: {fileID: 11400000, guid: a85ac9fcda504a940bb45b4205a28430, type: 2}
+      - trigger: spawned
+        rules: {fileID: 11400000, guid: c1b575f5c5103424fb0e01bc0737c7ac, type: 2}
+      - trigger: spawned
+        rules: {fileID: 11400000, guid: 8da2e9184ef1a5248a426686cd7a14e6, type: 2}

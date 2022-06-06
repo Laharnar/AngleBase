@@ -29,7 +29,7 @@ public class InteractStorage:MonoBehaviour{
 	}
 
 	///Finds correct storage based on source ("self", "target", "parent", "script+name", "obj+name", "anyparent", "parent")
-	static InteractStorage Redirect(string source, InteractAction action, List<InteractStorage> storages = null){
+	static InteractStorage Redirect(string source, InteractAction action, List<InteractStorage> storages = null, InteractStorage defValue = null){
 		var flexSource = source;
 		if(source == "self") // else is important here
 			return action.self.store;
@@ -64,8 +64,9 @@ public class InteractStorage:MonoBehaviour{
 			if(x != null)
 				return x;
 		}
-		Debug.Log("No matches, using object of storage. "+flexSource + " -> "+action.self, action.self);
-		return action.self.store; // most unsafe
+		if(defValue != null) // if it's null, expect null to be allowed
+			Debug.Log("No matches, using object of storage. "+flexSource + " -> "+defValue, action.self);
+		return defValue; // most unsafe
 	}
 	
 	// invoked
@@ -76,6 +77,7 @@ public class InteractStorage:MonoBehaviour{
 	
 	static void SetValue(string source, string prop, string value, InteractAction action, List<InteractStorage> storages)	
 	{
+		// int/str value setter
 		var storage = Redirect(source, action, storages);
 		var dict = storage.stored;
 		dict.Init(prop, 0);
@@ -85,6 +87,190 @@ public class InteractStorage:MonoBehaviour{
 			dict[prop].value = res;
 		dict[prop].svalue = value.ToString();
 	}
+
+	static bool SecondActivation(string code, InteractAction action, List<InteractStorage> storages, bool log = false)
+	{
+		// parses by structure instead of by order
+		// spawn prefs shields self parent=self
+		// version command reference_Or_value subparams
+		
+		// iteration data
+		InteractStorage source = null;
+		KeyScript script;
+		KeyTransform keyTransform;
+		Transform tobj;
+		string module = "";
+		string tag = "";
+		object ref1 = null;
+		
+		// states
+		int mode = 1; // mode 0: unknown, mode 1: search
+		int calculation = 0; // 0 : no calc, +1: calc modes
+		
+		// result data
+		bool spawn = false;
+		bool success = false;
+		
+		// results
+		List<object> refs = new List<object>();
+		Dictionary<string, object> parameters = new Dictionary<string, object>();
+		// 2: source(self, target), 21: module(obj, script), 22:tag, 
+		// 3: read reference
+		// 4: calculation, 5: end check.
+		
+		// iterations
+		Queue<string> codes = new Queue<string>();
+		codes.Enqueue(code);
+		while (codes.Count > 0)
+		{
+			var icode = codes.Dequeue();
+			var items = icode.Split(" ");
+			for (int i = 0; i < items.Length; i++)
+			{
+				if (mode == 1)
+				{
+					// reset
+					source = null;
+					ref1 = null; 
+					script = null;
+					keyTransform = null; 
+					tobj = null;
+					module = "";
+					tag = "";
+
+					// recognize commaand
+					var command = items[i];
+					if (command == "spawn")
+					{
+						spawn = true;
+						mode = 2;
+					}
+					else if (command.Contains("=") && (command != "=" && command.Length > 2))
+					{
+						// it's dynamic argument
+						parameters.Add(command, null);
+						var arg = command.Split("=");
+						codes.Enqueue(arg[1]);
+						mode = 1;
+					}
+					else
+					{
+						// incorrect command -> maybe it's source parameter
+						mode = 2;
+						i--;
+					}
+				}
+				else if (mode == 2)
+				{
+					var src = items[i];
+					source = Redirect(src, action, storages, null);
+					if (source == null)
+					{
+						// failed to find any -> it's not source, or source ended
+						mode = 4;
+						i--;
+					}
+					if (source != null)
+					{
+						ref1 = source;
+						mode = 21;
+					}
+				}
+				else if (mode == 21)
+				{
+					if (module == "")
+					{
+						module = items[i];
+						if (module == "obj" || module == "prefs" || module == "script")
+							mode = 22;
+						else
+						{
+							// not valid module, or end of item
+							module = "";
+							mode = 4;
+							i--;
+						}
+					}else { 
+						mode = 22;
+						i--;
+					}
+				}
+				else if (mode == 22)
+				{
+					tag = items[i];
+					mode = 3;
+				}
+				else if (mode == 3)
+				{
+					// collect module
+					if (module == "script")
+						ref1 = script = source.scripts[tag];
+					else if (module == "obj")
+						ref1 = keyTransform = source.objects[tag];
+					else if (module == "prefs")
+						ref1 = tobj = action.FindPrefab(tag);
+					mode = 4;
+					i--;
+				}
+				else if (mode == 4)
+				{
+					// apply(calc, ref)
+					//if(calculation != 0)
+					// todo
+					// mode = 5
+					//else {
+					if (ref1 != null)
+					{
+						refs.Add(ref1);
+						mode = 1;
+						i--;
+					}
+					else
+					{
+						if(log)
+							Debug.LogError($"Exit {icode}");
+						mode = -1;
+						break;
+					}
+				}
+			}
+			
+			if(ref1 != null){
+				refs.Add(ref1);
+				ref1 = null;
+			}
+		}
+	
+		
+		if(spawn){
+			if(refs.Count < 3){
+				Debug.Log($"Spawn err: {code}. unknown. last mode: {mode}. found: {refs.Count}");
+				return success = false;
+			}
+			Transform GetTransform (object obj){
+				if(log)
+					Debug.Log($"Get transform{obj}");
+				return obj is Transform ? (Transform)obj : obj is InteractStorage ? ((InteractStorage)obj).transform : ((KeyTransform)obj).prefab;
+			}
+			
+			var pref = GetTransform(refs[0]);
+			var pos = refs[1] is Vector3 ? (Vector3) refs[1] : GetTransform(refs[1]).position;
+			var parent = refs.Count > 2 ? GetTransform(refs[2]) : null;
+			
+			var t = Instantiate(pref, parent).transform;
+			t.transform.position = pos;
+			t.transform.rotation = parent != null ? parent.rotation : action.self.transform.rotation;
+			InteractState[] tStore = t.GetComponentsInChildren<InteractState>();
+			for (int i = 0; i < tStore.Length; i++)
+			{
+				tStore[i].spawnBy = action.self;
+				action.self.store.recentlySpawned.Add(tStore[i]);
+			}
+			success = true;
+		}
+		return success;
+	}
+		
 	// return true -> handled/content matches, depending on type of command
 	// see -> true/false by match
 	// false if all fails.
@@ -92,7 +278,22 @@ public class InteractStorage:MonoBehaviour{
 		// for new blocks, manually return true.
 		if(action == null) Debug.LogError("Action is null");
 		code = ConvertKeys(code);
-
+		KeyScript GetReference(string[] items, ref int id){
+			var storage = Redirect(items[id], action, storages); id++;
+			var typ = items[id]; id++;
+			if (typ == "script"){
+				var script = storage.scripts[items[id]]; id++;
+				return script;
+			}
+			Debug.LogError($"Unsupposerted {typ}");
+			return null;
+		}
+		
+		// version 2 first, then v1.
+		if(SecondActivation(code, action, storages, log)){
+			return true;
+		}
+			
 		string ConvertKeys(string code){
 			// ... { targets+see self flag } ...{ .. 2 .. } ...
 			StringBuilder build = new StringBuilder();
@@ -289,7 +490,7 @@ public class InteractStorage:MonoBehaviour{
 		}
 		#endregion actions
 		#region setter
-		// standard setter : set reference1 op value_OR_valueAtReference2
+		// standard setter : set reference1 value_OR_valueAtReference2
 		else if (items.Length == 4 && items[0]== "set"){
 			var command = items[0];
 			// set source prop value
@@ -297,16 +498,6 @@ public class InteractStorage:MonoBehaviour{
 			return true;
 		}else if(items.Length == 8 && items[0] == "set"){
 			
-			KeyScript GetReference(string[] items, ref int id){
-				var storage = Redirect(items[id], action, storages); id++;
-				var typ = items[id]; id++;
-				if (typ == "script"){
-					var script = storage.scripts[items[id]]; id++;
-					return script;
-				}
-				Debug.LogError($"Unsupposerted {typ}");
-				return null;
-			}
 			
 			// set self script Move = self script AiMove
 			int id = 1;
@@ -314,6 +505,14 @@ public class InteractStorage:MonoBehaviour{
 			var op = items[id++];
 			var ref2 = GetReference(items, ref id);
 			ref1.script = ref2.script;
+			return true;
+		}else  if(items.Length == 5 && items[0] == "set"){
+			
+			// set reference reference_OR_value
+			int id = 1;
+			var ref1 = GetReference(items, ref id);
+			var objStore = Redirect(items[id], action, storages);
+			ref1.script = objStore;
 			return true;
 		}
 		else if (items.Length == 4 || (items.Length == 6 && items[3] == "see")/*redirects second part*/){

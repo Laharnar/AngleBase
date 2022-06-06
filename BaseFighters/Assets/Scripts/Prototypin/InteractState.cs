@@ -22,6 +22,7 @@ public class InteractLogs{
 	public bool logTick=false;
 	public bool logStart=false;
 	public bool logSpawn=false;
+	public bool logPreDestroy = false;
 }
 
 public class InteractState:ComponentMono{
@@ -55,6 +56,10 @@ public class InteractState:ComponentMono{
 	void Awake(){
 		ValidateComponents();
 	}
+	
+	void OnDestroy(){
+		Tick(this, module.GetRules("predestroy"), logs.logPreDestroy, false);
+	}
 
 	public void ValidateComponents(){
 		if(module == null) module = GetComponent<InteractModule>();
@@ -81,12 +86,16 @@ public class InteractState:ComponentMono{
 		pickup.LoadGlobals();
 		store.stored.InitStr("state", state);
 		lastTime = -1;
-		Tick(this, module.GetRules("start"), logs.logStart);
+		Tick(this, module.GetRules("start"), logs.logStart, false);
+	}
+	
+	public void ReinitOnChangeOfBox(){
+		Tick(this, module.GetRules("start"), logs.logStart, false);
 	}
 	
 	void Update(){
 		if(!first){
-			Tick(this, module.GetRules("start2"), logs.logStart);
+			Tick(this, module.GetRules("start2"), logs.logStart, false);
 			first = true;
 		}
 		if(autoFresh && Time.time > tickTime){
@@ -95,7 +104,7 @@ public class InteractState:ComponentMono{
 			{
 				if(_collider != null)
 					_collider.enabled = !_collider.enabled;
-				Tick(this, module.GetRules("timed"), logs.logTimed);
+				OnTimed();
 			}
 			if(skipTimes > 0)
 				skipTimes--;
@@ -117,19 +126,26 @@ public class InteractState:ComponentMono{
 		}
 	}
 
+	public void OnTimed(string timedRule ="timed")
+    {
+		Tick(this, module.GetRules(timedRule), logs.logTimed);
+	}
+
     void OnTriggerEnter2D(Collider2D collider){
         InteractState x;
         if (collider.gameObject != gameObject && collider.TryGetComponent<InteractState>(out x))
-			Tick(x, module.GetRules("overlap"), logs.logOverlap || x.logs.logOverlap);
+			Tick(x, module.GetRules("overlap"), logs.logOverlap || x.logs.logOverlap, false);
     }
 	
-	void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log=false){
-		if(interactions.Count == 0) // prevents tick overriding overlap
+	void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log=false, bool timeBound = true){
+		if (log)
+			Debug.Log(interactions.Count + " "+ (lastTime == Time.time));
+		if (interactions.Count == 0) // prevents tick overriding overlap
 			return;
-        if(lastTime == Time.time)
+        if(timeBound && lastTime == Time.time)
             return;
 		var last = state;
-
+	
 		// statics, trigger on self
 		actions = Action(state, x.state, statics);
 		Fill(actions, x);
@@ -163,8 +179,9 @@ public class InteractState:ComponentMono{
 		if(store.recentlySpawned.Count > 0){
 			//Debug.Log("prespawn "+state + " "+x.state + " "+this+" "+x);
 			store.recentlySpawned.Add(x);// add spawner
-			OnSpawn(store.recentlySpawned);
+			List<InteractState> states = new List<InteractState>(store.recentlySpawned);
 			store.recentlySpawned.Clear();
+			OnSpawn(states);
 		}
 	}
 

@@ -19,6 +19,7 @@ public class InteractLayer
     public List<InteractTrigger> EditorTriggers => triggers;
     public bool EditorEnabled { get => enabled; set => enabled = value; }
     public string EditorLayer => layer;
+	private bool lastEnabled = false;
 
     public bool Matches(string layer)
     {
@@ -46,6 +47,12 @@ public class InteractLayer
     {
         triggers.Clear();
     }
+	
+	public bool ShouldRefresh(){
+		bool change = lastEnabled != enabled;
+		lastEnabled = enabled;
+		return change;
+	}
 }
 
 [System.Serializable]
@@ -112,13 +119,22 @@ public class InteractModule : MonoBehaviour
     [FormerlySerializedAs("rules")]
     [SerializeField] InteractRuleset overlapRules; // trigger rules
     [SerializeField] InteractRuleset timedRules;
-
+	InteractState state;
 
     void Awake()
     {
+		state = GetComponent<InteractState>();
         layers = CreateBox();
         triggerRules.Clear();
     }
+	
+	void Update(){
+		for (int i = 0; i < layers.layers.Count; i++){
+			if(layers.layers[i].ShouldRefresh()){
+				state.ReinitOnChangeOfBox();
+			}
+		}
+	}
 
     /// <summary>
     /// Note that this is recreated for every call.

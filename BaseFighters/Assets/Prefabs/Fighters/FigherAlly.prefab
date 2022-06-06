@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458576, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_Name
-      value: AllyFigher (1)
+      value: AllyFigher
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: layers.layers.Array.data[0].enabled
@@ -77,11 +77,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.07
+      value: 0.553
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4.13
+      value: -2.688
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.z
@@ -131,3 +131,20 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7999988722287173372, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
   m_PrefabInstance: {fileID: 8495048387182279408}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5301087722095418336 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4356465514255458576, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
+  m_PrefabInstance: {fileID: 8495048387182279408}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6456028040663982371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5301087722095418336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9cd4547034a1b45b32dce1e6f14983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

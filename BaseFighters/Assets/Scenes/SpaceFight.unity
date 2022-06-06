@@ -650,6 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   networked: 1
   wasdIn: 0
   raw: 0
@@ -2468,6 +2469,14 @@ PrefabInstance:
     - target: {fileID: 4356465514255458576, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_Name
       value: PlayerFigher
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
+      propertyPath: layers.layers.Array.data[0].enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
+      propertyPath: layers.layers.Array.data[2].enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_RootOrder

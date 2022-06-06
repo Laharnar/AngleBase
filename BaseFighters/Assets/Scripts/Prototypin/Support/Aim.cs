@@ -24,10 +24,11 @@ public class Aim : MonoBehaviour, ITFunc
     float closeOff;
     float lastReset;
 
-    void Start(){
+    void OnEnable(){
 		if(self == null)
 			self = transform;
         aimAt = self.position + self.up;
+		if(Camera.main == null)Debug.LogError("No main camera");
     }
 
     // Update is called once per frame

@@ -10,18 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
-  m_Name: CopyFlagToSpawn
+  m_Name: SpawnWhen0Shields
   m_EditorClassIdentifier: 
   interactions:
-  - note: copy spawn source to self
+  - note: 
     enabled: 1
     from: 
     to: 
     result: 
     action:
-      conditions: []
+      conditions:
+      - see self shields = 0
       codes:
-      - copypaste spawnBy self flag see spawnBy flag
+      - set self shields 1
+      - spawn self prefs shields self parent=self
       elseCodes: []
-      spawnSet: {fileID: 0}
+      spawnSet: {fileID: 11400000, guid: fc6c598a2e9e0c240ad460239596b669, type: 2}
       code: 
