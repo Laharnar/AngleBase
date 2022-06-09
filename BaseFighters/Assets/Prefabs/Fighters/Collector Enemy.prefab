@@ -177,7 +177,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396271, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: boxes.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396271, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: boxes.Array.data[0]

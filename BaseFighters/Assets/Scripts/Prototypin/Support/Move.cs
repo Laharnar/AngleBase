@@ -34,6 +34,8 @@ public class Move : MonoBehaviour, ITFunc
     public bool normalize = true;
     public Space moveSpace = Space.World;
     float curSpeed;
+	[Header("props")]
+	public InteractMoveProps movingUpdater;
 	
     // Update is called once per frame
     void Update()
@@ -58,6 +60,10 @@ public class Move : MonoBehaviour, ITFunc
                 }
             }
             move = new Vector3(hor, ver);
+			if(movingUpdater != null){
+				movingUpdater.value = hor != 0 || ver!= 0 ? 1 : 0;
+				movingUpdater.UpdateProp();
+			}
         }else if(target != null){
             var mag = move.magnitude;
             move = (target.position - self.position).normalized * mag;

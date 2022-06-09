@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.VisualScripting;
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName="InteractLib/InteractRuleset")]
 [RenamedFrom("InteractPref")]
 public class InteractRuleset : ScriptableObject
 {
-    
     public List<InteractModule.InteractRules> interactions = new List<InteractModule.InteractRules>();
 }

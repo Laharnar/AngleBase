@@ -22,8 +22,6 @@ MonoBehaviour:
       conditions:
       - see self move = 0
       codes:
-      - self disable script Move
-      - self disable script Aim
       - self disable obj Engines
       elseCodes: []
       spawnSet: {fileID: 0}
@@ -37,9 +35,37 @@ MonoBehaviour:
       conditions:
       - see self move = 1
       codes:
+      - self enable obj Engines
+      elseCodes: []
+      spawnSet: {fileID: 0}
+      code: 
+  - note: 
+    enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self move = 1
+      - see self isPlayer = 0
+      codes:
       - self enable script Move
       - self enable script Aim
-      - self enable obj Engines
+      elseCodes: []
+      spawnSet: {fileID: 0}
+      code: 
+  - note: 
+    enabled: 1
+    from: 
+    to: 
+    result: 
+    action:
+      conditions:
+      - see self move = 0
+      - see self isPlayer = 0
+      codes:
+      - self disable script Move
+      - self disable script Aim
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 

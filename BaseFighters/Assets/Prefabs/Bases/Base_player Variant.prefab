@@ -41,11 +41,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: stored.items.Array.data[0]._value
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: stored.items.Array.data[0]._svalue
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004081, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: triggerRules.Array.size
@@ -89,11 +89,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.51
+      value: -12.71
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.53
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   networked: 1
   wasdIn: 0
   raw: 0
@@ -188,6 +189,7 @@ MonoBehaviour:
   speed: 0.94
   normalize: 1
   moveSpace: 0
+  movingUpdater: {fileID: 0}
 --- !u!114 &2569804233584107610 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5428473771957004086, guid: 0e7e6d6521bb565438027a499522721d, type: 3}

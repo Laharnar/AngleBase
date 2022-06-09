@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 344421525}
   - component: {fileID: 344421527}
   - component: {fileID: 344421526}
+  - component: {fileID: 1507752186519709187}
   m_Layer: 0
   m_Name: Mode - player
   m_TagString: Untagged
@@ -63,6 +64,7 @@ MonoBehaviour:
   speed: 3.5
   normalize: 1
   moveSpace: 0
+  movingUpdater: {fileID: 1507752186519709187}
 --- !u!114 &344421526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +86,21 @@ MonoBehaviour:
   rngWeight: 0.4
   outRadius: 3.87
   rotationSpeed: 25
+--- !u!114 &1507752186519709187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 344421524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7cac2fe1fe9f24f8c533cd929c1f3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prop: move
+  value: 0
+  storage: {fileID: 3870464586057514039}
 --- !u!1 &1364701129
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +164,7 @@ MonoBehaviour:
   speed: 2.5
   normalize: 1
   moveSpace: 1
+  movingUpdater: {fileID: 0}
 --- !u!114 &1364701131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +226,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3104349694325704092, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6112352937866751399, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.b
       value: 0.6792453
@@ -310,20 +332,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: stored.items.Array.data[3]._value
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: scripts.items.Array.data[0].script
       value: 
-      objectReference: {fileID: 344421527}
+      objectReference: {fileID: 1364701132}
     - target: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: scripts.items.Array.data[1].script
       value: 
-      objectReference: {fileID: 344421526}
+      objectReference: {fileID: 1364701131}
     - target: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: scripts.items.Array.data[2].script
       value: 
-      objectReference: {fileID: 344421526}
+      objectReference: {fileID: 1364701131}
     - target: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: scripts.items.Array.data[3].script
       value: 
@@ -350,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 1364701131}
     - target: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: stored.items.Array.data[3]._svalue
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6112352938479817731, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: boxes.Array.size
@@ -460,3 +482,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6112352938479817729, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
   m_PrefabInstance: {fileID: 7018252625657751605}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3870464586057514039 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6112352938479817730, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+  m_PrefabInstance: {fileID: 7018252625657751605}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e80161fd3bd55541bc3afbde0920cc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

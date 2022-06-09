@@ -76,17 +76,21 @@ public class InteractStorage:MonoBehaviour{
 		SceneManager.LoadScene(scene.name);
 	}
 	
+	public void SetPropInt(string prop, string value){
+		var props = stored;
+		props.Init(prop, 0);
+
+		int res = 0;
+		if(int.TryParse(value, out res))
+			props[prop].value = res;
+		props[prop].svalue = value.ToString();
+	}
+	
 	static void SetValue(string source, string prop, string value, InteractAction action, List<InteractStorage> storages)	
 	{
 		// int/str value setter
 		var storage = Redirect(source, action, storages);
-		var dict = storage.stored;
-		dict.Init(prop, 0);
-
-		int res = 0;
-		if(int.TryParse(value, out res))
-			dict[prop].value = res;
-		dict[prop].svalue = value.ToString();
+		storage.SetPropInt(prop, value);
 	}
 
 	static bool SecondActivation(string code, InteractAction action, List<InteractStorage> storages, bool log = false)
