@@ -38,6 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4030221771428669090}
+  - {fileID: 5569464181804779896}
   - {fileID: 5109625110753623366}
   - {fileID: 7664643760399323952}
   - {fileID: 7657685874770344232}
@@ -71,11 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5a9d93214445f42906b8e0615697ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   state: collector
   statics: []
-  actions: []
   color: {fileID: 0}
-  lastTime: 0
   module: {fileID: 0}
   pickup: {fileID: 0}
   store: {fileID: 0}
@@ -88,6 +88,7 @@ MonoBehaviour:
     logTick: 0
     logStart: 0
     logSpawn: 0
+    logPreDestroy: 0
 --- !u!114 &1556527903171396270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,8 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788c6de82c3e89469bdee4b4cd685d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRules: {fileID: 0}
-  timedRules: {fileID: 0}
+  layers:
+    layers: []
+  boxes: []
   triggerRules:
   - trigger: tick
     rules: {fileID: 11400000, guid: 16d45485876715b4e8d0a014d7c4d1c7, type: 2}
@@ -137,6 +139,8 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: a10f6ff3f38b6aa41b8409d85fa610af, type: 2}
   - trigger: tick
     rules: {fileID: 11400000, guid: 0eb78693c5707214aaf1a274b66740eb, type: 2}
+  overlapRules: {fileID: 0}
+  timedRules: {fileID: 0}
 --- !u!114 &1556527903171396268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38f54958baf3df42b0550c8d6250853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   mouse: 0
   autoTrack: 1
   target: {fileID: 0}
@@ -183,6 +188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  networked: 1
   wasdIn: 0
   raw: 0
   stopOnLoss: 1
@@ -821,9 +828,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2816984997999971298}
-  - {fileID: 5569464181804779896}
   m_Father: {fileID: 1556527903171396269}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3771983641779711866
 GameObject:
@@ -858,7 +864,7 @@ Transform:
   - {fileID: 1637978687152784646}
   - {fileID: 1556527903636241160}
   m_Father: {fileID: 1556527903171396269}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7711230166635519656
 GameObject:
@@ -891,14 +897,14 @@ Transform:
   - {fileID: 2530447801417057561}
   - {fileID: 1637978688739319683}
   m_Father: {fileID: 1556527903171396269}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1278824337361336458
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 5109625110753623366}
+    m_TransformParent: {fileID: 1556527903171396269}
     m_Modifications:
     - target: {fileID: 6698539158613766604, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_Name
@@ -946,7 +952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6698539158613766642, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3765066
+      value: 1.3765068
       objectReference: {fileID: 0}
     - target: {fileID: 6698539158613766642, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -999,6 +1005,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  networked: 1
   wasdIn: 0
   raw: 0
   stopOnLoss: 1

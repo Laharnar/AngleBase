@@ -16,10 +16,11 @@ public class InteractLayer
     [SerializeField] internal string layer;
     [SerializeField] internal bool enabled;
     [SerializeField] internal List<InteractTrigger> triggers;
+	private bool lastEnabled = false;
+	
     public List<InteractTrigger> EditorTriggers => triggers;
     public bool EditorEnabled { get => enabled; set => enabled = value; }
     public string EditorLayer => layer;
-	private bool lastEnabled = false;
 
     public bool Matches(string layer)
     {
@@ -37,7 +38,7 @@ public class InteractLayer
         triggers.Add(items);
     }
 
-    public void Add(List<InteractTrigger> items)
+    public void AddList(List<InteractTrigger> items)
     {
         if (items == null) return;
         triggers.AddRange(items);
@@ -53,6 +54,15 @@ public class InteractLayer
 		lastEnabled = enabled;
 		return change;
 	}
+	
+	public InteractLayer Copy(){
+		return new InteractLayer(){
+			layer = this.layer,
+			enabled = this.enabled,
+			triggers = new List<InteractTrigger>(this.triggers),
+			lastEnabled = this.lastEnabled
+		};
+	}
 }
 
 [System.Serializable]
@@ -60,15 +70,15 @@ public class InteractBox
 {
     public List<InteractLayer> layers = new List<InteractLayer>();
 
-    public void Add(InteractLayer add){
+    public void AddLayer(InteractLayer add){
         foreach (var item in layers)
         {
             if(item.Matches(add.layer)){
-                item.Add(add.triggers);
+                item.AddList(new List<InteractTrigger>(add.triggers));
                 return;
             }
         }
-		layers.Add(add);
+		layers.Add(add.Copy());
     }
 
     /// <summary>
@@ -80,7 +90,7 @@ public class InteractBox
         foreach (var item in layers)
         {
             if(item == null) continue;
-            other.Add(item);
+            other.AddLayer(item);
         }
     }
 
@@ -142,10 +152,13 @@ public class InteractModule : MonoBehaviour
     public InteractBox CreateBox()
     {
         InteractBox temp = new InteractBox();
-        foreach (var item in boxes)
-            item.box.JoinInto(temp);
+        foreach (var item in boxes){
+			if(item.box == null)
+				UnityEngine.Debug.LogError("Box is null", this);
+            else item.box.JoinInto(temp);
+		}
         // unique local load for current version.
-        temp.Get("base").Add(triggerRules);
+        temp.Get("base").AddList(triggerRules);
         layers.JoinInto(temp);
         return temp;
     }

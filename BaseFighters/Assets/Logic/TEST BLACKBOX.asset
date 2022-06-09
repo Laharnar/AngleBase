@@ -22,5 +22,10 @@ MonoBehaviour:
     - layer: test
       enabled: 1
       triggers:
-      - trigger: start
+      - trigger: special
+        rules: {fileID: 11400000, guid: 0ef192a6e6c5d154091230e55475407e, type: 2}
+    - layer: test3
+      enabled: 1
+      triggers:
+      - trigger: special2
         rules: {fileID: 11400000, guid: 0ef192a6e6c5d154091230e55475407e, type: 2}

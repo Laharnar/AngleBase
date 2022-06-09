@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57e5b32452d56f4fbe6851f30969549, type: 3}
+  m_Name: ShipHpEngines
+  m_EditorClassIdentifier: 
+  box:
+    layers:
+    - layer: base
+      enabled: 1
+      triggers:
+      - trigger: timed
+        rules: {fileID: 11400000, guid: 9ba7ecaa914c56744beaf5357e3d8de7, type: 2}
+      - trigger: tick
+        rules: {fileID: 11400000, guid: 16d45485876715b4e8d0a014d7c4d1c7, type: 2}

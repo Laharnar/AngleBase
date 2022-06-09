@@ -13,11 +13,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.37
+      value: 13.285574
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 10.3
+      value: 10.747879
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.z
@@ -81,7 +81,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Name
-      value: FighterEnemy (5)
+      value: FighterEnemy (2)
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logTick
@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: damp
       value: 0.033
       objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: self
+      value: 
+      objectReference: {fileID: 5942315417640905295}
     - target: {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: close
       value: 2.27
@@ -119,24 +123,13 @@ PrefabInstance:
       propertyPath: logs.logStart
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6625343546320304645, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6709032014797086837, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: scripts.items.Array.data[0].script
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7115340372069663468, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+    - {fileID: 1536571723541901197, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
 --- !u!114 &5942315417640905280 stripped
 MonoBehaviour:
@@ -149,3 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38f54958baf3df42b0550c8d6250853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &5942315417640905295 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+  m_PrefabInstance: {fileID: 5860864761951329183}
+  m_PrefabAsset: {fileID: 0}

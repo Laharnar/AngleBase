@@ -2,6 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Serialization;
+
+
+[System.Serializable]
+public class InteractStored{
+	public string key;
+	[FormerlySerializedAs("value")]
+	public int _value;
+	[FormerlySerializedAs("svalue")]
+	public string _svalue;
+	public int value { get => _value; set {
+		_value = value;
+		_svalue = value.ToString();
+	}}
+	public string svalue { get => _svalue; set {
+		int.TryParse(value, out _value);
+		_svalue = value;
+	}}
+}
 
 [System.Serializable]
 public class TransformsList{
@@ -47,6 +66,8 @@ public class KeyTransform{
 public class InteractTransformList{
 	[SerializeField] List<KeyTransform> items = new List<KeyTransform>();
 	public int Count => items.Count;
+	
+	///Null if missing
 	public KeyTransform this[string index]{ 
 		get {
 			for (int i = 0; i < Count; i++){
@@ -70,6 +91,17 @@ public class InteractTransformList{
 		}
 		items.Add(new KeyTransform(){ key = prop, prefab = defaultValue});
 	}
+	
+	/// reserve if missing
+	public KeyTransform GetReserved(string index, Transform defaultValue = null){
+		for (int i = 0; i < Count; i++){
+			if (items[i].key == index)
+				return items[i];
+		}
+		items.Add(new KeyTransform(){ key = index, prefab = defaultValue});
+		return items[items.Count-1];
+	}
+	
 }
 
 [System.Serializable]

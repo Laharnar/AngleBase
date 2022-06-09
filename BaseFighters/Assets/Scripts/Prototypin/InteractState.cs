@@ -17,12 +17,13 @@ public class ComponentMono:MonoBehaviour{
 [System.Serializable]
 public class InteractLogs{
 
-	public bool logOverlap=false;
-	public bool logTimed=false;
-	public bool logTick=false;
-	public bool logStart=false;
-	public bool logSpawn=false;
+	public bool logOverlap = false;
+	public bool logTimed = false;
+	public bool logTick = false;
+	public bool logStart = false;
+	public bool logSpawn = false;
 	public bool logPreDestroy = false;
+	public bool logCustom = false;
 }
 
 public class InteractState:ComponentMono{
@@ -125,10 +126,14 @@ public class InteractState:ComponentMono{
 			o.Tick(o, mods, logs.logSpawn);
 		}
 	}
+	
+	public void CustomTrigger(string trigger){
+		Tick(this, module.GetRules(trigger), logs.logCustom, false);
+	}
 
 	public void OnTimed(string timedRule ="timed")
     {
-		Tick(this, module.GetRules(timedRule), logs.logTimed);
+		Tick(this, module.GetRules(timedRule), logs.logTimed, false);
 	}
 
     void OnTriggerEnter2D(Collider2D collider){
@@ -139,7 +144,7 @@ public class InteractState:ComponentMono{
 	
 	void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log=false, bool timeBound = true){
 		if (log)
-			Debug.Log(interactions.Count + " "+ (lastTime == Time.time));
+			Debug.Log(interactions.Count + " same time:"+ (lastTime == Time.time));
 		if (interactions.Count == 0) // prevents tick overriding overlap
 			return;
         if(timeBound && lastTime == Time.time)

@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fcf4ba721041a29489eeec151b5e427c, type: 3}
   m_Name: InitFlag1_AllyPlayer
   m_EditorClassIdentifier: 
-  oldName: InteractPref
   interactions:
-  - enabled: 1
+  - note: 
+    enabled: 1
     from: 
     to: 
     result: 
@@ -23,5 +23,6 @@ MonoBehaviour:
       codes:
       - self set flag 1
       - self set enemyFlag 2
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 

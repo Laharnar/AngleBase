@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
@@ -93,22 +94,30 @@ public class InteractStorage:MonoBehaviour{
 		// parses by structure instead of by order
 		// spawn prefs shields self parent=self
 		// version command reference_Or_value subparams
-		
+		if(log)
+			Debug.Log($"handling ver2: {code}", action.self);
 		// iteration data
 		InteractStorage source = null;
 		KeyScript script;
 		KeyTransform keyTransform;
+		InteractStored prop;
 		Transform tobj;
+		Action<string> triggerFun;
+		string triggerName;
+		string propName = "";
 		string module = "";
 		string tag = "";
 		object ref1 = null;
+		object ref2 = null;
 		
 		// states
 		int mode = 1; // mode 0: unknown, mode 1: search
-		int calculation = 0; // 0 : no calc, +1: calc modes
+		int calculation = 0; // 0 : no calc, +1: calc modes(1:add)
 		
 		// result data
 		bool spawn = false;
+		bool assign = false;
+		bool logging = false;
 		bool success = false;
 		
 		// results
@@ -125,6 +134,7 @@ public class InteractStorage:MonoBehaviour{
 		{
 			var icode = codes.Dequeue();
 			var items = icode.Split(" ");
+			int lastId = items.Length - 1;
 			for (int i = 0; i < items.Length; i++)
 			{
 				if (mode == 1)
@@ -132,11 +142,17 @@ public class InteractStorage:MonoBehaviour{
 					// reset
 					source = null;
 					ref1 = null; 
+					ref2 = null;
+					prop = null;
 					script = null;
 					keyTransform = null; 
 					tobj = null;
 					module = "";
 					tag = "";
+					triggerFun = null;
+					triggerName = "";
+					propName = "";
+					calculation = 0;
 
 					// recognize commaand
 					var command = items[i];
@@ -144,6 +160,14 @@ public class InteractStorage:MonoBehaviour{
 					{
 						spawn = true;
 						mode = 2;
+					}else if (command == "set" && items.Length == 5){
+						mode = 2; // current support: set spawnBy obj shields self
+						assign = true;
+					}else if(command == "trigger"){
+						mode = 2;// trigger self trigger customTrigger
+					}else if(command == "add" && items.Length == 4){
+						mode = 2; // add self test 1
+						calculation = 1;
 					}
 					else if (command.Contains("=") && (command != "=" && command.Length > 2))
 					{
@@ -152,6 +176,8 @@ public class InteractStorage:MonoBehaviour{
 						var arg = command.Split("=");
 						codes.Enqueue(arg[1]);
 						mode = 1;
+					}else if(command == "log"){
+						mode = 5;
 					}
 					else
 					{
@@ -181,17 +207,27 @@ public class InteractStorage:MonoBehaviour{
 					if (module == "")
 					{
 						module = items[i];
-						if (module == "obj" || module == "prefs" || module == "script")
+						if (module == "obj" || module == "prefs" || module == "script" || module == "trigger")
 							mode = 22;
 						else
 						{
-							// not valid module, or end of item
+							// not valid module, or end of item, or property
 							module = "";
-							mode = 4;
+							mode = 6;
 							i--;
 						}
 					}else { 
 						mode = 22;
+						i--;
+					}
+				}else if(mode == 6){ // redirect to end or auto expect prop
+					if(calculation == 1){
+						propName = items[i];
+						source.stored.Init(propName);
+						module ="prop";
+						mode = 22;
+					}else{ 	
+						mode = 4;
 						i--;
 					}
 				}
@@ -199,6 +235,7 @@ public class InteractStorage:MonoBehaviour{
 				{
 					tag = items[i];
 					mode = 3;
+					if(i == lastId) i--;
 				}
 				else if (mode == 3)
 				{
@@ -206,9 +243,17 @@ public class InteractStorage:MonoBehaviour{
 					if (module == "script")
 						ref1 = script = source.scripts[tag];
 					else if (module == "obj")
-						ref1 = keyTransform = source.objects[tag];
+						ref1 = keyTransform = source.objects.GetReserved(tag);
 					else if (module == "prefs")
 						ref1 = tobj = action.FindPrefab(tag);
+					else if(module == "trigger"){
+						ref1 = triggerFun = source.state.CustomTrigger;
+						ref2 = triggerName = tag;
+					}else if (module == "prop"){
+						ref1 = prop = source.stored[propName];
+						ref2 = tag;
+					}
+					
 					mode = 4;
 					i--;
 				}
@@ -219,6 +264,9 @@ public class InteractStorage:MonoBehaviour{
 					// todo
 					// mode = 5
 					//else {
+					if(calculation == 1){
+						refs.Add("calc="+calculation);
+					}
 					if (ref1 != null)
 					{
 						refs.Add(ref1);
@@ -227,11 +275,16 @@ public class InteractStorage:MonoBehaviour{
 					}
 					else
 					{
-						if(log)
-							Debug.LogError($"Exit {icode}");
 						mode = -1;
 						break;
 					}
+					if(ref2 != null){
+						refs.Add(ref2);
+					}
+				}else if(mode == 5) {// log
+					logging = true;
+					ref1 = code;
+					mode = 4;
 				}
 			}
 			
@@ -239,18 +292,26 @@ public class InteractStorage:MonoBehaviour{
 				refs.Add(ref1);
 				ref1 = null;
 			}
+			if(ref2 != null){
+				refs.Add(ref1);
+				ref2 = null;
+			}
 		}
 	
+		// stage 2
+		Transform GetTransform (object obj){
+			if(log)
+				Debug.Log($"Get transform{obj}");
+			return obj is Transform ? (Transform)obj : obj is InteractStorage ? ((InteractStorage)obj).transform : ((KeyTransform)obj).prefab;
+		}
 		
+		
+		success = true;
+		if(refs.Count == 0) return false;
 		if(spawn){
 			if(refs.Count < 3){
 				Debug.Log($"Spawn err: {code}. unknown. last mode: {mode}. found: {refs.Count}");
 				return success = false;
-			}
-			Transform GetTransform (object obj){
-				if(log)
-					Debug.Log($"Get transform{obj}");
-				return obj is Transform ? (Transform)obj : obj is InteractStorage ? ((InteractStorage)obj).transform : ((KeyTransform)obj).prefab;
 			}
 			
 			var pref = GetTransform(refs[0]);
@@ -258,6 +319,11 @@ public class InteractStorage:MonoBehaviour{
 			var parent = refs.Count > 2 ? GetTransform(refs[2]) : null;
 			
 			var t = Instantiate(pref, parent).transform;
+			#if NETWORK
+			var netObj = t.GetComponent<NetworkObject>();
+			if(netObj != null)
+				netObj.Spawn();
+			#endif
 			t.transform.position = pos;
 			t.transform.rotation = parent != null ? parent.rotation : action.self.transform.rotation;
 			InteractState[] tStore = t.GetComponentsInChildren<InteractState>();
@@ -266,8 +332,27 @@ public class InteractStorage:MonoBehaviour{
 				tStore[i].spawnBy = action.self;
 				action.self.store.recentlySpawned.Add(tStore[i]);
 			}
-			success = true;
+		}else if (assign){
+			var refTarget = (KeyTransform)refs[0];
+			var value = GetTransform(refs[1]);
+			refTarget.prefab = value;
+		}else if(refs[0] is Action<string> actstr){
+			if(log)
+				Debug.Log("activated "+refs[1].ToString());
+			actstr.Invoke(refs[1].ToString());
+		}else if(logging && refs[0] is string msg){
+			Debug.Log(msg, action.self);
+		}else if (refs[0] is string calc && calc.StartsWith("calc=")){
+			int calcMode = int.Parse(calc.Split("=")[1]);
+			if(calcMode == 1){
+				var target = (InteractStored)refs[1];
+				var value = int.Parse((string)refs[2]);
+				target.value += value;
+			}
 		}
+		else success = false;
+		if(log && !success)
+			Debug.Log($"exit v2 -> v1 {code}");
 		return success;
 	}
 		
@@ -285,7 +370,7 @@ public class InteractStorage:MonoBehaviour{
 				var script = storage.scripts[items[id]]; id++;
 				return script;
 			}
-			Debug.LogError($"Unsupposerted {typ}");
+			Debug.LogError($"Unsupported {typ} {code}");
 			return null;
 		}
 		
@@ -344,7 +429,6 @@ public class InteractStorage:MonoBehaviour{
 			return result; // optimized start
 		}
 
-		if(log) Debug.Log($"code:: {code} '{action.self}'", action.self);
 		var self = action.self.store;
 		string[] items = code.Split(" ");
 		if(items.Length == 1)
@@ -458,7 +542,7 @@ public class InteractStorage:MonoBehaviour{
 						else if(posStr == "parent")
 							pos += actionSelf.transform.parent.position;
 						else if(posStr == "random")
-							pos += (Vector3)Random.insideUnitCircle * range;
+							pos += (Vector3)UnityEngine.Random.insideUnitCircle * range;
 						else if(posStr.StartsWith("child_")){
 							// child_0, child_1...
 							var sub =int.Parse(posStr.Substring("child_".Length));
@@ -573,7 +657,7 @@ public class InteractStorage:MonoBehaviour{
 						((Rigidbody2D)scripts[value].script).gravityScale = 0;
 				}
 				else if(prop == "layer")
-					module.layers.Get(value).enabled = true;
+					module.layers.Get(value).enabled = false;
 			}else return false;
 			return true;
 		}
@@ -859,21 +943,4 @@ public class InteractStorage:MonoBehaviour{
 			items.Add(new InteractStored(){ key = prop, value = 0, svalue = defaultValue.ToString()});
 		}
 	}
-}
-	
-[System.Serializable]
-public class InteractStored{
-	public string key;
-	[FormerlySerializedAs("value")]
-	public int _value;
-	[FormerlySerializedAs("svalue")]
-	public string _svalue;
-	public int value { get => _value; set {
-		_value = value;
-		_svalue = value.ToString();
-	}}
-	public string svalue { get => _svalue; set {
-		int.TryParse(value, out _value);
-		_svalue = value;
-	}}
 }

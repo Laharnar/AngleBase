@@ -29,6 +29,7 @@ public class Aim : MonoBehaviour, ITFunc
 			self = transform;
         aimAt = self.position + self.up;
 		if(Camera.main == null)Debug.LogError("No main camera");
+		else if(Camera.main.orthographic == false) Debug.LogError("Main cam should be ortographic... perspective doesn't work with input");
     }
 
     // Update is called once per frame

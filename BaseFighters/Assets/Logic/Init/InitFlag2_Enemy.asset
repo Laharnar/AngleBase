@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: InitFlag2_Enemy
   m_EditorClassIdentifier: 
   interactions:
-  - enabled: 1
+  - note: 
+    enabled: 1
     from: 
     to: 
     result: 
@@ -22,5 +23,6 @@ MonoBehaviour:
       codes:
       - self set flag 2
       - self set enemyFlag 1
+      elseCodes: []
       spawnSet: {fileID: 0}
       code: 

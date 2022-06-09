@@ -101,6 +101,8 @@ GameObject:
   - component: {fileID: 7225417086815267930}
   - component: {fileID: 4962689759312889534}
   - component: {fileID: 866153861502917186}
+  - component: {fileID: -8606002416558516575}
+  - component: {fileID: -7881422893132373451}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -136,20 +138,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  networked: 1
   wasdIn: 0
   raw: 0
+  stopOnLoss: 1
   target: {fileID: 0}
+  stopDist: 0
   pong: 0
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}
   move: {x: 0, y: 1, z: 0}
   speed: 10.27
   normalize: 1
   moveSpace: 1
-  accelerate: 0
 --- !u!114 &-9179880505489586930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,11 +183,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa5a9d93214445f42906b8e0615697ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 0}
   state: bullet
   statics: []
-  actions: []
   color: {fileID: 0}
-  lastTime: 0
+  module: {fileID: 0}
+  pickup: {fileID: 0}
+  store: {fileID: 0}
   autoFresh: 1
   skipTimes: 1
   freshRate: 3
@@ -191,6 +199,7 @@ MonoBehaviour:
     logTick: 0
     logStart: 0
     logSpawn: 0
+    logPreDestroy: 0
 --- !u!114 &1775440549095488415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,13 +233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788c6de82c3e89469bdee4b4cd685d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRules: {fileID: 0}
-  timedRules: {fileID: 0}
+  layers:
+    layers: []
+  boxes: []
   triggerRules:
   - trigger: timed
     rules: {fileID: 11400000, guid: 55683d17ea769b14d8590339dd3ff20d, type: 2}
   - trigger: overlap
     rules: {fileID: 11400000, guid: a57b0d8df1c44324f8fded657d3ecaee, type: 2}
+  overlapRules: {fileID: 0}
+  timedRules: {fileID: 0}
 --- !u!114 &7225417086815267930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,3 +304,45 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8606002416558516575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246287340756247693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &-7881422893132373451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5246287340756247693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  InLocalSpace: 0
+  Interpolate: 1

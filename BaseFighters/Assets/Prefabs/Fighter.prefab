@@ -89,6 +89,7 @@ MonoBehaviour:
     logTick: 1
     logStart: 0
     logSpawn: 0
+    logPreDestroy: 0
 --- !u!114 &225920028382769619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,8 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c788c6de82c3e89469bdee4b4cd685d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  overlapRules: {fileID: 0}
-  timedRules: {fileID: 0}
+  layers:
+    layers: []
+  boxes: []
   triggerRules:
   - trigger: tick
     rules: {fileID: 11400000, guid: 16d45485876715b4e8d0a014d7c4d1c7, type: 2}
@@ -141,6 +143,8 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: a10f6ff3f38b6aa41b8409d85fa610af, type: 2}
   - trigger: tick
     rules: {fileID: 11400000, guid: 3fd58a8694c176b40a037ea12b74d1cc, type: 2}
+  overlapRules: {fileID: 0}
+  timedRules: {fileID: 0}
 --- !u!114 &225920028382769617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -167,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b38f54958baf3df42b0550c8d6250853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   mouse: 0
   autoTrack: 1
   target: {fileID: 0}
@@ -187,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  networked: 1
   wasdIn: 0
   raw: 0
   stopOnLoss: 1
@@ -604,15 +611,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6698539158613766642, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.633676
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6698539158613766642, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.3765066
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6698539158613766642, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.058253422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6698539158613766642, guid: 9f4c53fdcaa76fb46bb8ffeb06c5ec2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -666,6 +673,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
+  networked: 1
   wasdIn: 0
   raw: 0
   stopOnLoss: 1
