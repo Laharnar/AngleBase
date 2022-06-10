@@ -1,0 +1,1102 @@
+fileFormatVersion: 2
+guid: 4eeb92e9a63188e4c8acafe29d0ed6eb
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_0
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 353
+        width: 76
+        height: 116
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5da89c7543289e14e8c5c2e33f7473d9
+      internalID: -833259248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 400
+        width: 47
+        height: 70
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df5cab5e9678a814190a58c9aec7227f
+      internalID: 554074119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_2
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 411
+        width: 59
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aafe6818a79a8846b87ffdde32b239d
+      internalID: -873487598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_3
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 409
+        width: 95
+        height: 67
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a15aa63c89d7617409cbc3da12d41fe2
+      internalID: -131416181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_4
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 357
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f41d357016e7e3e40866660279672e33
+      internalID: -736714203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_5
+      rect:
+        serializedVersion: 2
+        x: 495
+        y: 393
+        width: 69
+        height: 83
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a4671a8a0a664d45b00281d25bcf210
+      internalID: -983567183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_6
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 401
+        width: 116
+        height: 75
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eed9d8ccb5a25b4da5fc0cdd1da2358
+      internalID: -107562736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_7
+      rect:
+        serializedVersion: 2
+        x: 748
+        y: 324
+        width: 83
+        height: 69
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd7d45ef4b1def499436f7868246e5a
+      internalID: -1520080108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_8
+      rect:
+        serializedVersion: 2
+        x: 952
+        y: 291
+        width: 74
+        height: 73
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1404339ce047474b9faa12689a1c735
+      internalID: 2075600317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_9
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 250
+        width: 66
+        height: 108
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e9659c53f3fd984880e57d046aa4aa8
+      internalID: 209931466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 365
+        width: 67
+        height: 91
+      alignment: 9
+      pivot: {x: 0.76241887, y: 0.25377443}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d58e122133d5eb34d97c72b1f1f464ab
+      internalID: 2068222988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_11
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 319
+        width: 49
+        height: 97
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e571a2f405798244ab916a0dace1908f
+      internalID: -1335168226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_12
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 338
+        width: 64
+        height: 74
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49f8378f3adea9f43a057d741077222a
+      internalID: -112385799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_13
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 280
+        width: 94
+        height: 161
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c8beff240a9474683262e174583191
+      internalID: -816249697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_14
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 321
+        width: 77
+        height: 74
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f981ffe38b8aedc409c2b786845a80d1
+      internalID: 1604700411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_15
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 310
+        width: 105
+        height: 87
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd3439be03ad4ed4a95707efce6548de
+      internalID: -1445957742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_16
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 368
+        width: 71
+        height: 49
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0a86acc029fb4941aab0cfd83651e33
+      internalID: 558547815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_17
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 308
+        width: 65
+        height: 66
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbfc39766937e904283c785cad51f49e
+      internalID: -1619695311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_18
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 261
+        width: 55
+        height: 88
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a26d8d1afd8d15429097b4c9a404c5b
+      internalID: 1671099584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_19
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 119
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59de5e35029e4bf4c8d0240735282828
+      internalID: 1259514478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_20
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 236
+        width: 54
+        height: 68
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d09b821ba18854388750fe4b3e6e2b
+      internalID: -382573458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_21
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 194
+        width: 82
+        height: 121
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7807ca82635392543ba4efabb8f29375
+      internalID: 468407545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_22
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 119
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d2ca7f7d28d70d4580f2923f467655e
+      internalID: 2035974720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_23
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 119
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19cb1f1c012aace4780df5dea63af570
+      internalID: -1714056452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_24
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 237
+        width: 67
+        height: 73
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c117e4fb1fab3c40b28445a6751d5e0
+      internalID: -1574702545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_25
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 390
+        width: 100
+        height: 86
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5077a713536c2f4ea4cc907d017958b
+      internalID: -324638198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_26
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 309
+        width: 73
+        height: 59
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef6a285dc380a248ac390fd175f9073
+      internalID: -961546335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_27
+      rect:
+        serializedVersion: 2
+        x: 1061
+        y: 423
+        width: 49
+        height: 50
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9278ff61b2b6069438f8fbfccb175566
+      internalID: 1506657501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_28
+      rect:
+        serializedVersion: 2
+        x: 603
+        y: 71
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97df3c916bb62574c9c85e43c9bc4bc7
+      internalID: -336489485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_29
+      rect:
+        serializedVersion: 2
+        x: 874
+        y: 412
+        width: 91
+        height: 64
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6361b11e046d02e4dad0d60d9aafc510
+      internalID: -438561818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_30
+      rect:
+        serializedVersion: 2
+        x: 979
+        y: 423
+        width: 72
+        height: 48
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b07898b5734a6d4e9f2358070c6360b
+      internalID: -1925190299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_31
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 372
+        width: 54
+        height: 54
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dc1c3104aff394428e7565f93633474
+      internalID: 343350894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_32
+      rect:
+        serializedVersion: 2
+        x: 972
+        y: 366
+        width: 63
+        height: 51
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6657f843bf851e488d14096aedb16dd
+      internalID: 1250124735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bed881020ba0dfb4ea59cc8939b48449
+      internalID: -502485686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_34
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 0
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31ce01b62037af5469a297e07cdcecf0
+      internalID: 2054238972
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_35
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 247
+        width: 61
+        height: 67
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2499194c5df69d846a94198e07db406b
+      internalID: -240195119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_36
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 0
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6de8ca454728340a5a8e4a19abe04b
+      internalID: -1097033089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_37
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 0
+        width: 104
+        height: 119
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5c5408f2c5c968429f96fda3ca349bf
+      internalID: -13592256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_38
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 245
+        width: 86
+        height: 73
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f6694e75fdd1e945af5b1fb4a881bf8
+      internalID: 991742854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_39
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 245
+        width: 46
+        height: 58
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4174d77a8eabb4a4eabb8f9964dbbb77
+      internalID: 1012883564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_40
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 228
+        width: 85
+        height: 97
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3480be4a8363e4e46ab1158c36d6d78c
+      internalID: -121423086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_41
+      rect:
+        serializedVersion: 2
+        x: 855
+        y: 224
+        width: 73
+        height: 84
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d991f50aae6a41d40a8e61e472f7ccf1
+      internalID: -1842090804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_42
+      rect:
+        serializedVersion: 2
+        x: 964
+        y: 217
+        width: 61
+        height: 74
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4c7b6c9f85fff747ac17f8a555861ca
+      internalID: -121842653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dev_space_149_shiplist_43
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 213
+        width: 75
+        height: 84
+      alignment: 8
+      pivot: {x: 1, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4db00e68b9448f44cb9b5a57bb1823d0
+      internalID: 2087356440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      dev_space_149_shiplist_17: -1619695311
+      dev_space_149_shiplist_38: 991742854
+      dev_space_149_shiplist_0: -833259248
+      dev_space_149_shiplist_10: 2068222988
+      dev_space_149_shiplist_43: 2087356440
+      dev_space_149_shiplist_25: -324638198
+      dev_space_149_shiplist_26: -961546335
+      dev_space_149_shiplist_23: -1714056452
+      dev_space_149_shiplist_27: 1506657501
+      dev_space_149_shiplist_11: -1335168226
+      dev_space_149_shiplist_39: 1012883564
+      dev_space_149_shiplist_15: -1445957742
+      dev_space_149_shiplist_20: -382573458
+      dev_space_149_shiplist_3: -131416181
+      dev_space_149_shiplist_2: -873487598
+      dev_space_149_shiplist_16: 558547815
+      dev_space_149_shiplist_12: -112385799
+      dev_space_149_shiplist_4: -736714203
+      dev_space_149_shiplist_37: -13592256
+      dev_space_149_shiplist_8: 2075600317
+      dev_space_149_shiplist_29: -438561818
+      dev_space_149_shiplist_14: 1604700411
+      dev_space_149_shiplist_28: -336489485
+      dev_space_149_shiplist_21: 468407545
+      dev_space_149_shiplist_36: -1097033089
+      dev_space_149_shiplist_7: -1520080108
+      dev_space_149_shiplist_32: 1250124735
+      dev_space_149_shiplist_42: -121842653
+      dev_space_149_shiplist_1: 554074119
+      dev_space_149_shiplist_9: 209931466
+      dev_space_149_shiplist_31: 343350894
+      dev_space_149_shiplist_33: -502485686
+      dev_space_149_shiplist_5: -983567183
+      dev_space_149_shiplist_6: -107562736
+      dev_space_149_shiplist_19: 1259514478
+      dev_space_149_shiplist_34: 2054238972
+      dev_space_149_shiplist_30: -1925190299
+      dev_space_149_shiplist_35: -240195119
+      dev_space_149_shiplist_22: 2035974720
+      dev_space_149_shiplist_13: -816249697
+      dev_space_149_shiplist_40: -121423086
+      dev_space_149_shiplist_18: 1671099584
+      dev_space_149_shiplist_41: -1842090804
+      dev_space_149_shiplist_24: -1574702545
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

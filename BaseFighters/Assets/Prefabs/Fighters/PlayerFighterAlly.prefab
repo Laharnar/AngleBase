@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5301087722095418336, guid: b62ca45131444ca429c3b343994baed2, type: 3}
       propertyPath: m_Name
-      value: PlayerAllyFigher
+      value: PlayerFighterAlly
       objectReference: {fileID: 0}
     - target: {fileID: 5301087722095418341, guid: b62ca45131444ca429c3b343994baed2, type: 3}
       propertyPath: layers.layers.Array.data[0].enabled
@@ -25,15 +25,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5301087722095418343, guid: b62ca45131444ca429c3b343994baed2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.553
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5301087722095418343, guid: b62ca45131444ca429c3b343994baed2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.688
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5301087722095418343, guid: b62ca45131444ca429c3b343994baed2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.058253422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5301087722095418343, guid: b62ca45131444ca429c3b343994baed2, type: 3}
       propertyPath: m_LocalRotation.w

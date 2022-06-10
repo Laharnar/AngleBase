@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// use for network
+public interface IInteractTunnel{
+	void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log, bool timeBound);
+}
+
 
 public class ComponentMono:MonoBehaviour{
 	protected SpriteRenderer sprite;
@@ -49,6 +54,9 @@ public class InteractState:ComponentMono{
 
 	internal List<InteractAction> actions = new List<InteractAction>();
 	internal InteractState spawnBy;
+	IInteractTunnel tunnel;
+	
+	Action<InteractState, List<InteractModule.InteractRules>, bool, bool> TickE;
 
 	bool first = false;
 	float tickTime = 0;
@@ -56,10 +64,14 @@ public class InteractState:ComponentMono{
 
 	void Awake(){
 		ValidateComponents();
+		TickE = Tick;
+		tunnel = GetComponent<IInteractTunnel>();
+		if(tunnel != null)
+			TickE = tunnel.Tick;
 	}
 	
 	void OnDestroy(){
-		Tick(this, module.GetRules("predestroy"), logs.logPreDestroy, false);
+		TickE(this, module.GetRules("predestroy"), logs.logPreDestroy, false);
 	}
 
 	public void ValidateComponents(){
@@ -87,16 +99,16 @@ public class InteractState:ComponentMono{
 		pickup.LoadGlobals();
 		store.stored.InitStr("state", state);
 		lastTime = -1;
-		Tick(this, module.GetRules("start"), logs.logStart, false);
+		TickE(this, module.GetRules("start"), logs.logStart, false);
 	}
 	
 	public void ReinitOnChangeOfBox(){
-		Tick(this, module.GetRules("start"), logs.logStart, false);
+		TickE(this, module.GetRules("start"), logs.logStart, false);
 	}
 	
 	void Update(){
 		if(!first){
-			Tick(this, module.GetRules("start2"), logs.logStart, false);
+			TickE(this, module.GetRules("start2"), logs.logStart, false);
 			first = true;
 		}
 		if(autoFresh && Time.time > tickTime){
@@ -110,7 +122,7 @@ public class InteractState:ComponentMono{
 			if(skipTimes > 0)
 				skipTimes--;
 		}
-		else Tick(this, module.GetRules("tick"), logs.logTick);
+		else TickE(this, module.GetRules("tick"), logs.logTick, true);
 	}
 
 	public void OnSpawn(List<InteractState> spawnBlock){
@@ -123,26 +135,27 @@ public class InteractState:ComponentMono{
 			mods.AddRange(this.module.GetRules("spawn"));
 			if(logs.logSpawn)
 				Debug.Log("OnSpawn "+" tick on "+o+" "+this+" "+mods.Count);
-			o.Tick(o, mods, logs.logSpawn);
+			o.TickE(o, mods, logs.logSpawn, true);
 		}
 	}
 	
 	public void CustomTrigger(string trigger){
-		Tick(this, module.GetRules(trigger), logs.logCustom, false);
+		TickE(this, module.GetRules(trigger), logs.logCustom, false);
 	}
 
 	public void OnTimed(string timedRule ="timed")
     {
-		Tick(this, module.GetRules(timedRule), logs.logTimed, false);
+		TickE(this, module.GetRules(timedRule), logs.logTimed, false);
 	}
 
     void OnTriggerEnter2D(Collider2D collider){
         InteractState x;
         if (collider.gameObject != gameObject && collider.TryGetComponent<InteractState>(out x))
-			Tick(x, module.GetRules("overlap"), logs.logOverlap || x.logs.logOverlap, false);
+			TickE(x, module.GetRules("overlap"), logs.logOverlap || x.logs.logOverlap, false);
     }
 	
-	void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log=false, bool timeBound = true){
+	// Prefer other public functions. This is to be used IInteractTunnel.
+	public void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log=false, bool timeBound = true){
 		if (log)
 			Debug.Log(interactions.Count + " same time:"+ (lastTime == Time.time));
 		if (interactions.Count == 0) // prevents tick overriding overlap

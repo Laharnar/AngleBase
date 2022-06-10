@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458576, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_Name
-      value: AllyFigher
+      value: FigherAlly
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: layers.layers.Array.data[0].enabled
@@ -77,15 +77,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.553
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.688
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.058253422
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalRotation.w
@@ -148,3 +148,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cd4547034a1b45b32dce1e6f14983, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  module: {fileID: 0}
+  isPlayer: 0

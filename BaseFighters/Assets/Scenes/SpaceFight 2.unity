@@ -3224,18 +3224,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3870464586057514039, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
-      propertyPath: stored.items.Array.data[0]._value
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 3870464586057514039, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
-      propertyPath: stored.items.Array.data[0]._svalue
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 7882975841163966429, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
-      propertyPath: triggerRules.Array.data[0].rules
-      value: 
-      objectReference: {fileID: 11400000, guid: 84a8dafc463ef6f47afd8c2e810acde6, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
 --- !u!4 &3125819328114587419 stripped

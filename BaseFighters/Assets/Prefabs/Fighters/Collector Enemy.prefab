@@ -73,11 +73,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396269, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.39
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396269, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1556527903171396269, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -364,6 +364,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &-6536943276948043373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112352938479817734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 951099334
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
 --- !u!114 &2018324109963565191
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +396,19 @@ MonoBehaviour:
   rate: 1.85
   skipTimes: 0
   resetSkipTimesOnStart: 0
+--- !u!114 &7525009148082570957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6112352938479817734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c3ba6a460fd40a43a7060689f59ed4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  always: 0
 --- !u!114 &6112352938479817742 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1556527903171396258, guid: f5064cec2659e4340ab71f4530f4b39f, type: 3}

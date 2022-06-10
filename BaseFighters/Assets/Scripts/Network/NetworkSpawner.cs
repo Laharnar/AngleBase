@@ -1,18 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class NetworkSpawner : MonoBehaviour
+public class NetworkSpawner : NetworkBehaviour, IInteractTunnel
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	InteractState state;
+	public bool always = false;
+	
+	void Awake(){
+		state = GetComponent<InteractState>();
+	}
+	
+    public void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log, bool timeBound){
+		if(IsServer || always)
+			state.Tick(x, interactions, log, timeBound);
+	}
 }
