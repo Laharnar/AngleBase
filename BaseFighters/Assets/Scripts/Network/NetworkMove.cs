@@ -8,6 +8,12 @@ public class NetworkMove: NetworkBehaviour{
 	public InteractModule module;
 	public bool isPlayer = false;
 	
+	void Awake(){
+		if(!GameObject.FindObjectOfType<NetworkManager>()){
+			enabled = false;
+		}
+	}
+	
 	void OnStartClient(){
 		move = GetComponent<Move>();
 		module = module == null ? GetComponent<InteractModule>() : module;

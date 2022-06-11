@@ -10,6 +10,7 @@ public class NetworkSpawner : NetworkBehaviour, IInteractTunnel
 	
 	void Awake(){
 		state = GetComponent<InteractState>();
+		always = always || !GameObject.FindObjectOfType<NetworkManager>();
 	}
 	
     public void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log, bool timeBound){
