@@ -18,8 +18,8 @@ public class NetworkMove: NetworkBehaviour{
 		move = GetComponent<Move>();
 		module = module == null ? GetComponent<InteractModule>() : module;
 		Debug.Log("handling "+IsLocalPlayer + " "+ isPlayer);
-		module.layers.Get("player").enabled = IsLocalPlayer && isPlayer;
-		module.layers.Get("ai").enabled = !IsLocalPlayer || !isPlayer;
+		module.RealtimeLayers.Get("player").enabled = IsLocalPlayer && isPlayer;
+		module.RealtimeLayers.Get("ai").enabled = !IsLocalPlayer || !isPlayer;
 	}
 	
 }

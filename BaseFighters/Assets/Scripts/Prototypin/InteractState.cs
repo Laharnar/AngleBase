@@ -102,7 +102,7 @@ public class InteractState:ComponentMono{
 		TickE(this, module.GetRules("start"), logs.logStart, false);
 	}
 	
-	public void ReinitOnChangeOfBox(){
+	public void StartReinitOnLayerUpdate(){
 		TickE(this, module.GetRules("start"), logs.logStart, false);
 	}
 	

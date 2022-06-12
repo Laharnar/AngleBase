@@ -645,7 +645,7 @@ public class InteractStorage:MonoBehaviour{
 				else if(prop == "script")
 					((Behaviour)scripts[value].script).enabled = true;
 				else if(prop == "layer")
-					module.layers.Get(value).enabled = true;
+					module.RealtimeLayers.Get(value).enabled = true;
 			}
 			else if(command == "disable"){
 				var objects = storage.objects;
@@ -662,7 +662,7 @@ public class InteractStorage:MonoBehaviour{
 						((Rigidbody2D)scripts[value].script).gravityScale = 0;
 				}
 				else if(prop == "layer")
-					module.layers.Get(value).enabled = false;
+					module.RealtimeLayers.Get(value).enabled = false;
 			}else return false;
 			return true;
 		}

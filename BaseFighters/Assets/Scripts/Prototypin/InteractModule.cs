@@ -21,7 +21,11 @@ public class InteractLayer
     public List<InteractTrigger> EditorTriggers => triggers;
     public bool EditorEnabled { get => enabled; set => enabled = value; }
     public string EditorLayer => layer;
-
+	
+	public InteractLayer(){
+		lastEnabled = enabled;
+	}
+	
     public bool Matches(string layer)
     {
         return this.layer == layer;
@@ -49,7 +53,7 @@ public class InteractLayer
         triggers.Clear();
     }
 	
-	public bool ShouldRefresh(){
+	public bool HasToRefresh(){
 		bool change = lastEnabled != enabled;
 		lastEnabled = enabled;
 		return change;
@@ -121,7 +125,7 @@ public class InteractTrigger
 
 public class InteractModule : MonoBehaviour
 {
-    [SerializeField] public InteractBox layers;
+    [SerializeField] InteractBox layers;
     [SerializeField] List<InteractBoxPref> boxes;
     [Header("Start:Loaded to 'base', then cleared")]
     [SerializeField] List<InteractTrigger> triggerRules;
@@ -129,23 +133,45 @@ public class InteractModule : MonoBehaviour
     [FormerlySerializedAs("rules")]
     [SerializeField] InteractRuleset overlapRules; // trigger rules
     [SerializeField] InteractRuleset timedRules;
+
+	[Header("Realtime")]
+    [SerializeField] public InteractBox activeLayers;
+    public InteractBox RealtimeLayers => activeLayers;
 	InteractState state;
 
     void Awake()
     {
 		state = GetComponent<InteractState>();
-        layers = CreateBox();
-        triggerRules.Clear();
+        activeLayers = CreateBox();
     }
 	
 	void Update(){
+		if((int)Time.time % (5+UnityEngine.Random.Range(-1,4)) == 0)
+			layers = CreateBox();
 		for (int i = 0; i < layers.layers.Count; i++){
-			if(layers.layers[i].ShouldRefresh()){
-				state.ReinitOnChangeOfBox();
+			if(layers.layers[i].HasToRefresh()){
+				state.StartReinitOnLayerUpdate();
 			}
 		}
 	}
 
+	public List<InteractLayer> EditorLayers()
+	{
+		List<InteractLayer> group = new List<InteractLayer>();
+		group.AddRange(layers.layers);
+		foreach (var item in boxes){
+			if(item.box == null)
+				continue;
+            group.AddRange(item.box.layers);
+		}
+		group.Add(new InteractLayer(){
+            enabled = true,
+            layer = "base",
+            triggers = new List<InteractTrigger>(triggerRules)
+        });
+		return group;	
+	}
+	
     /// <summary>
     /// Note that this is recreated for every call.
     /// </summary>
@@ -165,7 +191,7 @@ public class InteractModule : MonoBehaviour
 
     public List<InteractRules> GetRules(string trigger){
         List<InteractRules> interactions = new List<InteractRules>();
-        foreach (var item in layers.layers){
+        foreach (var item in activeLayers.layers){
             if(!item.enabled) continue;
             var triggers = item.triggers;
             for (int i = 0; i < triggers.Count; i++)

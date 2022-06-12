@@ -77,59 +77,74 @@ public class InteractWindow:EditorWindow{
 
         GUILayout.Label("roots");
         int count = 0;
+		List<InteractState> filteredObjs = new List<InteractState>();
         for(int i = 0; i < objs.Count; i++)
         {
             var obj = objs[i];
             if(obj == null) continue;
             var tobj = obj.transform;
             if(!PrefixSearch(tobj.name, searchObj)) continue;
+			filteredObjs.Add(obj);
+		}
+		
+		bool ShowObjectLayers(InteractState obj, bool[] foldouts, int i){
+			// obj + show
+			EditorGUILayout.BeginHorizontal();
+			EditorGUILayout.ObjectField(obj, typeof(InteractState), true);
+			foldouts[i] = EditorGUILayout.Toggle(foldouts[i]);
+			EditorGUILayout.EndHorizontal();
 
+			if(!foldouts[i])
+				return false;
+			obj.ValidateComponents();
+			EditorGUI.indentLevel ++;
+			var layers = obj.module.EditorLayers();
+			for (int k = 0; k < layers.Count; k++)
+			{
+				var layer = layers[k];
+				EditorGUILayout.BeginHorizontal();
+				EditorGUILayout.LabelField(layer.EditorLayer, GUILayout.Width(100));
+				layer.EditorEnabled = EditorGUILayout.Toggle("", layer.EditorEnabled, GUILayout.Width(20));
+				EditorGUILayout.EndHorizontal();
+				
+				for (int j = 0; j < layer.EditorTriggers.Count; j++)
+				{
+					var rule = layer.EditorTriggers[j];
+					if (!PrefixSearch(rule.rules.name, searchRule)) continue;
+					DrawRule(rule);
+				}
+			}
+			EditorGUI.indentLevel --;
+			return true;
+		}
+		
+		for(int i = 0; i < filteredObjs.Count; i++)
+        {
+            var obj = filteredObjs[i];
+			var tobj = obj.transform;
             if(tobj.parent == null || (manualRoot!= null && tobj.parent == manualRoot.transform)){
-                EditorGUILayout.BeginHorizontal();
-                EditorGUILayout.ObjectField(obj, typeof(InteractState), true);
-                foldouts[i] = EditorGUILayout.Toggle(foldouts[i]);
-                EditorGUILayout.EndHorizontal();
-
-                if(!foldouts[i])
-                    continue;
-                obj.ValidateComponents();
-                EditorGUI.indentLevel ++;
-                var layers = obj.module.CreateBox().layers;
-                for (int k = 0; k < layers.Count; k++)
-                {
-					var layer = layers[k];
-                    EditorGUILayout.BeginHorizontal();
-                    EditorGUILayout.LabelField(layer.EditorLayer, GUILayout.Width(100));
-                    layer.EditorEnabled = EditorGUILayout.Toggle("", layer.EditorEnabled, GUILayout.Width(20));
-                    EditorGUILayout.EndHorizontal();
-                    for (int j = 0; j < layer.EditorTriggers.Count; j++)
-                    {
-                        var rule = layer.EditorTriggers[j];
-                        if (!PrefixSearch(rule.rules.name, searchRule)) continue;
-                        DrawRule(rule);
-                    }
-                }
+				if(!ShowObjectLayers(obj, foldouts, i)) continue;
                 count++;
-                EditorGUI.indentLevel --;
+				if(count%3 == 0 && count > 0)
+					EditorGUILayout.Space();
             }
-            if(count%3 == 0 && count > 0)
-                EditorGUILayout.Space();
         }
         EditorGUILayout.Space();
         EditorGUILayout.Space();
         count = 0;
         GUILayout.Label("children");
-        for(int i = 0; i < objs.Count; i++)
+        for(int i = 0; i < filteredObjs.Count; i++)
         {
-            if(objs[i] == null) continue;
-            var tobj = objs[i].transform;
-            if(!PrefixSearch(tobj.name, searchObj)) continue;
+			var obj = filteredObjs[i];
+            if(obj == null) continue;
+            var tobj = obj.transform;
             if(tobj.parent != null && (manualRoot == null || tobj.parent != manualRoot.transform)){
+				if(!ShowObjectLayers(obj, foldouts, i)) continue;
+				
                 count++;
-                EditorGUILayout.ObjectField(objs[i], typeof(InteractState), true);
+				if(count%3 == 0 && count > 0)
+					EditorGUILayout.Space();
             }
-            if(count%3 == 0 && count > 0)
-                EditorGUILayout.Space();
         }
 
         EditorGUILayout.EndScrollView();

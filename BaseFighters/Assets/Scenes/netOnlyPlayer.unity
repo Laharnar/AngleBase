@@ -371,6 +371,8 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: a809ca2b5d9a4894ea2f95392849fc3e, type: 2}
   overlapRules: {fileID: 0}
   timedRules: {fileID: 0}
+  activeLayers:
+    layers: []
 --- !u!114 &577976587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -593,7 +595,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logTick
@@ -722,7 +724,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: logs.logTick
