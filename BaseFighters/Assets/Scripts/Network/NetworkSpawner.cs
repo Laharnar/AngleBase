@@ -14,7 +14,15 @@ public class NetworkSpawner : NetworkBehaviour, IInteractTunnel
 	}
 	
     public void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log, bool timeBound){
-		if(IsServer || always)
+		if(IsServer || always || IsLocalPlayer)
 			state.Tick(x, interactions, log, timeBound);
+	}
+	
+	public void Postspawn(GameObject obj){
+		NetworkObject.Spawn(obj);
+	}
+	
+	public void Despawn(GameObject obj){
+		Destroy(obj);
 	}
 }

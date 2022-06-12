@@ -494,9 +494,10 @@ public class InteractStorage:MonoBehaviour{
 				target.transform.parent = self.transform;
 			else if (doing == "drop")
 				target.transform.parent = self.transform.parent;
-			else if (doing == "death" || doing == "destroy")
+			else if (doing == "death" || doing == "destroy"){
+				Debug.Log("Destroy 1");
 				Destroy(goSource);
-			else if (doing == "spawn"){
+			}else if (doing == "spawn"){
 				var actionSelf = action.self;
 				if (items.Length < 4) 
 					Debug.LogError("wrong item count, need at least 4", action.self);

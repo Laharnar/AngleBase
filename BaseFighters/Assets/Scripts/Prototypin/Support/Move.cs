@@ -26,6 +26,8 @@ public class Move : MonoBehaviour, ITFunc
     [Range(0f, 1f)] public float correctionDecay = 0f;
 
     [Header("specs")]
+	[Range(0,1f)]
+	public float lerpSteps = 1f;
     public bool flatZ = true;
     public bool quadraticAccel = false;
     [SerializeField] Vector3 preference = Vector3.zero;
@@ -36,6 +38,8 @@ public class Move : MonoBehaviour, ITFunc
     float curSpeed;
 	[Header("props")]
 	public InteractMoveProps movingUpdater;
+	
+	Vector3 correctionDir;
 	
     // Update is called once per frame
     void Update()
@@ -89,7 +93,9 @@ public class Move : MonoBehaviour, ITFunc
         if((self.position + next).magnitude <= stopDist)
             next = Vector3.Lerp(Vector3.zero, next, 0.3f);
         
-        self.Translate(next, moveSpace);
+		correctionDir = Vector2.Lerp(next, correctionDir, lerpSteps);
+		
+        self.Translate(correctionDir, moveSpace);
         correction*=1-correctionDecay;
         if(pong && correction.sqrMagnitude < 0.1f && move != preference)
             move = preference;

@@ -132,10 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 155738742}
-  - component: {fileID: 155738741}
-  - component: {fileID: 155738749}
-  - component: {fileID: 155738748}
   - component: {fileID: 155738750}
+  - component: {fileID: 155738751}
+  - component: {fileID: 155738752}
   m_Layer: 0
   m_Name: '[NetworkManager]'
   m_TagString: Untagged
@@ -143,32 +142,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &155738741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155738740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  InLocalSpace: 0
-  Interpolate: 1
 --- !u!4 &155738742
 Transform:
   m_ObjectHideFlags: 0
@@ -184,62 +157,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &155738748
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155738740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e26f82009f8f36d45a99adae79eab7b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &155738749
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 155738740}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RunInBackground: 1
-  LogLevel: 1
-  NetworkConfig:
-    ProtocolVersion: 0
-    NetworkTransport: {fileID: 155738750}
-    PlayerPrefab: {fileID: 3870464586057514035, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
-    NetworkPrefabs:
-    - Override: 0
-      Prefab: {fileID: 5091495086027715631, guid: 9b189b2b2e082394bbd666fc8a849307, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
-    - Override: 0
-      Prefab: {fileID: 3870464586057514035, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
-      SourcePrefabToOverride: {fileID: 0}
-      SourceHashToOverride: 0
-      OverridingTargetPrefab: {fileID: 0}
-    TickRate: 30
-    ClientConnectionBufferTimeout: 10
-    ConnectionApproval: 0
-    ConnectionData: 
-    EnableTimeResync: 0
-    TimeResyncInterval: 30
-    EnsureNetworkVariableLengthSafety: 0
-    EnableSceneManagement: 1
-    ForceSamePrefabs: 1
-    RecycleNetworkIds: 1
-    NetworkIdRecycleDelay: 120
-    RpcHashSize: 0
-    LoadSceneTimeOut: 120
-    SpawnTimeout: 1
-    EnableNetworkLogs: 1
 --- !u!114 &155738750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,6 +185,62 @@ MonoBehaviour:
     PacketDelayMS: 0
     PacketJitterMS: 0
     PacketDropRate: 0
+--- !u!114 &155738751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155738740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 593a2fe42fa9d37498c96f9a383b6521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunInBackground: 1
+  LogLevel: 1
+  NetworkConfig:
+    ProtocolVersion: 0
+    NetworkTransport: {fileID: 155738750}
+    PlayerPrefab: {fileID: 3870464586057514035, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
+    NetworkPrefabs:
+    - Override: 0
+      Prefab: {fileID: 3870464586057514035, guid: eb3f711045081144382db43a4cf09eb8, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    - Override: 0
+      Prefab: {fileID: 5091495086027715631, guid: 9b189b2b2e082394bbd666fc8a849307, type: 3}
+      SourcePrefabToOverride: {fileID: 0}
+      SourceHashToOverride: 0
+      OverridingTargetPrefab: {fileID: 0}
+    TickRate: 30
+    ClientConnectionBufferTimeout: 10
+    ConnectionApproval: 0
+    ConnectionData: 
+    EnableTimeResync: 0
+    TimeResyncInterval: 30
+    EnsureNetworkVariableLengthSafety: 0
+    EnableSceneManagement: 1
+    ForceSamePrefabs: 1
+    RecycleNetworkIds: 1
+    NetworkIdRecycleDelay: 120
+    RpcHashSize: 0
+    LoadSceneTimeOut: 120
+    SpawnTimeout: 1
+    EnableNetworkLogs: 1
+--- !u!114 &155738752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155738740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e26f82009f8f36d45a99adae79eab7b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &270452539
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,7 +549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.35
+      value: 1.75
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.y
@@ -617,6 +590,14 @@ PrefabInstance:
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Name
       value: Fighter
+      objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: logs.logTick
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769630, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Enabled
@@ -738,6 +719,14 @@ PrefabInstance:
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Name
       value: Fighter (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769628, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: logs.logTick
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769630, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Enabled

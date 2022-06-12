@@ -61,10 +61,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458576, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_Name
-      value: FigherAlly
+      value: AllyFigher (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: layers.layers.Array.data[0].enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
+      propertyPath: layers.layers.Array.data[1].enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458581, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
@@ -77,15 +81,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.04
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.058253422
       objectReference: {fileID: 0}
     - target: {fileID: 4356465514255458583, guid: a2a0bac249b3734498a64b39a9202901, type: 3}
       propertyPath: m_LocalRotation.w
