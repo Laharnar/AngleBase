@@ -23,8 +23,6 @@ public class InteractPickup:MonoBehaviour{
 	}
 
     public void Trigger(string transitionTo, List<InteractModule.InteractRules> interactions, bool log = false){
-		if(log)
-		Debug.Log("count: "+states.actions.Count);
 		foreach (var action in states.actions){
 			if(action == null)
 				continue;

@@ -40,6 +40,7 @@ MonoBehaviour:
       codes:
       - target add hp -1
       - self script Move Func MoveDir negative
+      - self set flag see target flag
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 

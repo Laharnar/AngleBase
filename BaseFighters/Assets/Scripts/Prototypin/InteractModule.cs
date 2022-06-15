@@ -160,6 +160,7 @@ public class InteractModule : MonoBehaviour
     [SerializeField] public InteractBox activeLayers;
     public InteractBox RealtimeLayers => activeLayers;
 	InteractState state;
+	public bool editorRefresh;
 
     void Awake()
     {
@@ -170,10 +171,13 @@ public class InteractModule : MonoBehaviour
 	void Update(){
 		if((int)Time.time % (5+UnityEngine.Random.Range(-1,4)) == 0)
 			activeLayers = CreateBox();
-		for (int i = 0; i < activeLayers.layers.Count; i++){
-			if(activeLayers.layers[i].HasToRefresh()){
-				state.StartReinitOnLayerUpdate();
+		if(editorRefresh){
+			for (int i = 0; i < activeLayers.layers.Count; i++){
+				if(activeLayers.layers[i].HasToRefresh()){
+					state.StartReinitOnLayerUpdate();
+				}
 			}
+			editorRefresh = false;
 		}
 	}
 

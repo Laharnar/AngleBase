@@ -61,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8862476955121759501, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}
       propertyPath: logs.logOverlap
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}

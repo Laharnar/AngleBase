@@ -126,12 +126,12 @@ public class Move : MonoBehaviour, ITFunc
 	public void Func(List<string> args){
 		string name =args[0];
 		string operation = args[1];
-		Debug.Log($"script {name} {operation}");
         if(name == "MoveDir")
 		{
 			if(operation == "negate" || operation == "negative")
 				move = -move;
-		}
+		}else 
+			Debug.Log($"script {name} {operation}");
     }
 
     public void SetTarget(Transform target){
