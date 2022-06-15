@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8606002416558516575, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
+      objectReference: {fileID: 0}
     - target: {fileID: 5246287340756247693, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}
       propertyPath: m_Name
-      value: Bullet
+      value: Bullet Thin
       objectReference: {fileID: 0}
     - target: {fileID: 5957097938388547752, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}
       propertyPath: m_RootOrder
@@ -54,6 +58,10 @@ PrefabInstance:
     - target: {fileID: 5957097938388547752, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862476955121759501, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}
+      propertyPath: logs.logOverlap
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b5b25d820033d14a9a12dd210c7ef25, type: 3}

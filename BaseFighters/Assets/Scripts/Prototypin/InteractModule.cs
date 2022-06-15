@@ -67,6 +67,17 @@ public class InteractLayer
 			lastEnabled = this.lastEnabled
 		};
 	}
+	
+	public void Serialize(string path){
+		path = NodeManager.Path(path, layer);
+		var node = NodeManager.Node(path, layer);
+		node.WriteAttrib("enabled", enabled);
+		
+		var triggersPath = NodeManager.Path(path, "triggers");
+		for (var i = 0; i < triggers.Count; i ++){
+			triggers[i].Serialize(triggersPath);
+		}
+	}
 }
 
 [System.Serializable]
@@ -113,6 +124,11 @@ public class InteractBox
         layers.Add(created);
         return created;
     }
+	
+	public void Serialize(string path){
+		for (int i = 0; i < layers.Count; i++)
+			layers[i].Serialize(NodeManager.Path(path, "boxes"));
+	}
 }
 
 [System.Serializable]
@@ -121,6 +137,12 @@ public class InteractTrigger
     // trigger names: timed, tick, overlap(trigger collision), collision
     public string trigger;
     public InteractRuleset rules;
+	
+	public void Serialize(string path){
+		var triggersPath = NodeManager.Path(path, trigger);
+		var triggersNode = NodeManager.Node(triggersPath, trigger);
+		triggersNode.WriteAttrib("rules", rules.name);
+	}
 }
 
 public class InteractModule : MonoBehaviour
@@ -147,9 +169,9 @@ public class InteractModule : MonoBehaviour
 	
 	void Update(){
 		if((int)Time.time % (5+UnityEngine.Random.Range(-1,4)) == 0)
-			layers = CreateBox();
-		for (int i = 0; i < layers.layers.Count; i++){
-			if(layers.layers[i].HasToRefresh()){
+			activeLayers = CreateBox();
+		for (int i = 0; i < activeLayers.layers.Count; i++){
+			if(activeLayers.layers[i].HasToRefresh()){
 				state.StartReinitOnLayerUpdate();
 			}
 		}
@@ -221,6 +243,18 @@ public class InteractModule : MonoBehaviour
         {
             return this.from == from && this.to == to;
         }
+		
+		public void Serialize(string path){
+			var ruleNode = NodeManager.Node(path, "");
+			
+			ruleNode.WriteAttrib("note", note);
+			ruleNode.WriteAttrib("enabled", enabled);
+			ruleNode.WriteAttrib("from", from);
+			ruleNode.WriteAttrib("to", to);
+			ruleNode.WriteAttrib("result", result);
+			
+			action.Serialize(NodeManager.Path(path, "action"));
+		}
     }
 }
 
@@ -240,5 +274,15 @@ public class InteractAction{
 	
 	public Transform FindPrefab(string key){
 		return spawnSet != null ? spawnSet.FindPrefab(key) : null;
+	}
+	
+	public void Serialize(string path){
+		var actionNode = NodeManager.Node(path, "");
+		
+		NodeManager.List<string>(path, "conditions", conditions);
+		NodeManager.List<string>(path, "codes", codes);
+		NodeManager.List<string>(path, "elseCodes", elseCodes);
+		
+		actionNode.WriteAttrib("spawnSet", spawnSet.name);
 	}
 }

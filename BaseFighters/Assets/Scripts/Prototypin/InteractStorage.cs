@@ -93,6 +93,7 @@ public class InteractStorage:MonoBehaviour{
 		storage.SetPropInt(prop, value);
 	}
 
+	// self script Move Func MoveDir negative
 	static bool SecondActivation(string code, InteractAction action, List<InteractStorage> storages, bool log = false)
 	{
 		// parses by structure instead of by order
@@ -132,13 +133,17 @@ public class InteractStorage:MonoBehaviour{
 		// 4: calculation, 5: end check.
 		
 		// iterations
+		StringBuilder modeSeq = new StringBuilder();
+		modeSeq.Append(" ("+code + ")::  ");
 		Queue<string> codes = new Queue<string>();
 		codes.Enqueue(code);
+		modeSeq.Append(action.self + " ");
 		while (codes.Count > 0)
 		{
 			var icode = codes.Dequeue();
 			var items = icode.Split(" ");
 			int lastId = items.Length - 1;
+			modeSeq.Append(mode + ", ");
 			for (int i = 0; i < items.Length; i++)
 			{
 				if (mode == 1)
@@ -172,6 +177,9 @@ public class InteractStorage:MonoBehaviour{
 					}else if(command == "add" && items.Length == 4){
 						mode = 2; // add self test 1
 						calculation = 1;
+					}else if(command == "Func"){
+						mode = 7;
+						i--;
 					}
 					else if (command.Contains("=") && (command != "=" && command.Length > 2))
 					{
@@ -189,6 +197,10 @@ public class InteractStorage:MonoBehaviour{
 						mode = 2;
 						i--;
 					}
+				}else if (mode == 7)
+				{
+					// to end pack
+					refs.Add(items[i]);
 				}
 				else if (mode == 2)
 				{
@@ -200,7 +212,7 @@ public class InteractStorage:MonoBehaviour{
 						mode = 4;
 						i--;
 					}
-					if (source != null)
+					else
 					{
 						ref1 = source;
 						mode = 21;
@@ -224,12 +236,13 @@ public class InteractStorage:MonoBehaviour{
 						mode = 22;
 						i--;
 					}
+					modeSeq.Append($"module: {module} ");
 				}else if(mode == 6){ // redirect to end or auto expect prop
 					if(calculation == 1){
 						propName = items[i];
 						source.stored.Init(propName);
 						module ="prop";
-						mode = 22;
+						mode = 23;
 					}else{ 	
 						mode = 4;
 						i--;
@@ -238,14 +251,24 @@ public class InteractStorage:MonoBehaviour{
 				else if (mode == 22)
 				{
 					tag = items[i];
+					modeSeq.Append($"tag: {tag} ");
 					mode = 3;
 					if(i == lastId) i--;
+				}
+				else if (mode == 23)
+				{
+					i--;
+					mode = 22;
 				}
 				else if (mode == 3)
 				{
 					// collect module
-					if (module == "script")
+					if (module == "script"){
 						ref1 = script = source.scripts[tag];
+						modeSeq.Append($"ref1: {ref1}");
+						if(ref1 == null)
+							Debug.LogError($"Script IS NULL {tag}->{source}", source);
+					}
 					else if (module == "obj")
 						ref1 = keyTransform = source.objects.GetReserved(tag);
 					else if (module == "prefs")
@@ -280,6 +303,7 @@ public class InteractStorage:MonoBehaviour{
 					else
 					{
 						mode = -1;
+						modeSeq.Append("ABORT0REF1");
 						break;
 					}
 					if(ref2 != null){
@@ -290,6 +314,10 @@ public class InteractStorage:MonoBehaviour{
 					ref1 = code;
 					mode = 4;
 				}
+				if(i == -1)
+					modeSeq.Append(mode +" '" + items[0] + "',");
+				else
+					modeSeq.Append(mode +" '" + items[i] + "',");
 			}
 			
 			if(ref1 != null){
@@ -300,7 +328,11 @@ public class InteractStorage:MonoBehaviour{
 				refs.Add(ref1);
 				ref2 = null;
 			}
+			if(items.Length > 0)
+				modeSeq.Append(mode +" '" + items[items.Length-1]);
 		}
+		if(log)
+			Debug.Log("end." + modeSeq.ToString());
 	
 		// stage 2
 		Transform GetTransform (object obj){
@@ -353,6 +385,21 @@ public class InteractStorage:MonoBehaviour{
 				var value = int.Parse((string)refs[2]);
 				target.value += value;
 			}
+		}else if(refs.Count > 1 && refs[0] is KeyScript keyScript && refs[1] is string funcStr && funcStr == "Func"){
+			List<string> args = new List<string>();
+			for (int i = 1; i< refs.Count; i++){
+				if(refs[i] is string str && str == "Func"){
+					if(args.Count > 0)
+					{
+						((ITFunc)keyScript.script).Func(args);
+						args.Clear();
+					}
+				}else {
+					args.Add(refs[i].ToString());
+				}
+			}
+			if(args.Count > 0)
+				((ITFunc)keyScript.script).Func(args);
 		}
 		else success = false;
 		if(log && !success)
@@ -495,7 +542,6 @@ public class InteractStorage:MonoBehaviour{
 			else if (doing == "drop")
 				target.transform.parent = self.transform.parent;
 			else if (doing == "death" || doing == "destroy"){
-				Debug.Log("Destroy 1");
 				Destroy(goSource);
 			}else if (doing == "spawn"){
 				var actionSelf = action.self;

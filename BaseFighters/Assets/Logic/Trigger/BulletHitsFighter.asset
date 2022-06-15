@@ -22,9 +22,24 @@ MonoBehaviour:
       conditions:
       - see target flag != see self flag
       - see target state != bullet
+      - see target state != shield
       codes:
       - target add hp -1
       - self action destroy
+      elseCodes: []
+      spawnSet: {fileID: 0}
+      code: 
+  - note: 
+    enabled: 1
+    from: bullet
+    to: 
+    result: bullet
+    action:
+      conditions:
+      - see target state = shield
+      codes:
+      - target add hp -1
+      - self script Move Func MoveDir negative
       elseCodes: []
       spawnSet: {fileID: 0}
       code: 

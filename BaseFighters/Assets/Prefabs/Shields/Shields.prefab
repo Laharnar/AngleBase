@@ -101,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5699088722203156852, guid: 10c6d60dbd5fa774c96d3d5dfb0784b8, type: 3}
       propertyPath: stored.items.Array.data[0]._value
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5699088722203156852, guid: 10c6d60dbd5fa774c96d3d5dfb0784b8, type: 3}
       propertyPath: stored.items.Array.data[0]._svalue
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6190648121143686217, guid: 10c6d60dbd5fa774c96d3d5dfb0784b8, type: 3}
       propertyPath: boxes.Array.size

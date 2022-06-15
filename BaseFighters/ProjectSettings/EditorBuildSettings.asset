@@ -5,12 +5,30 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/SpaceFight.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/netOnlyPlayer.unity
     guid: eb2a08b15441ab44eab9f254c23e01c8
+  - enabled: 1
+    path: Assets/Scenes/SpaceLevelSelector.unity
+    guid: 605de564dbfa6a84f8535db1359f7bf0
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 0.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 1.unity
+    guid: 7f5371c84b30b03479d759d940d11d6f
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 2.unity
+    guid: 9d85ecae622cbd740a063e329690aa02
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 3.unity
+    guid: 571c65f6300d1aa418c3be03327ab728
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 4.unity
+    guid: 1979426de64c91a4195f3c20dd04e140
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 5.unity
+    guid: d90089a684f204140b4a7e4bf79433bc
   - enabled: 1
     path: Assets/Photon/PhotonChat/Demos/DemoChat/DemoChat-Scene.unity
     guid: ec07267f6a28fb044ac89845274e79af

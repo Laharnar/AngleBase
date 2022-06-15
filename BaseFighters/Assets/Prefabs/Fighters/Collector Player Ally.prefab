@@ -83,7 +83,7 @@ MonoBehaviour:
   autoTrack: 0
   target: {fileID: 0}
   close: 2.77
-  damp: 0.25
+  damp: 0.852
   rngWeight: 0.4
   outRadius: 3.87
   rotationSpeed: 25
@@ -423,6 +423,10 @@ PrefabInstance:
     - target: {fileID: 6112352938479817734, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Name
       value: Collector Player Ally
+      objectReference: {fileID: 0}
+    - target: {fileID: 6112352938479817741, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+      propertyPath: freshRate
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 6337076554694563624, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.b

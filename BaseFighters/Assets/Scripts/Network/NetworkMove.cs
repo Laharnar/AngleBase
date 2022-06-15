@@ -9,7 +9,7 @@ public class NetworkMove: NetworkBehaviour{
 	public bool isPlayer = false;
 	
 	void Awake(){
-		if(!GameObject.FindObjectOfType<NetworkManager>()){
+		if(!NetworkManager.Singleton){
 			enabled = false;
 		}
 	}
@@ -22,4 +22,16 @@ public class NetworkMove: NetworkBehaviour{
 		module.RealtimeLayers.Get("ai").enabled = !IsLocalPlayer || !isPlayer;
 	}
 	
+	
+	[ServerRpc]
+	void DespawnServerRpc(){
+		NetworkObject.Despawn();
+	}
+	
+	void OnApplicationQuit(){
+		if(enabled){
+			DespawnServerRpc();
+			NetworkManager.Singleton.Shutdown();
+		}
+	}
 }

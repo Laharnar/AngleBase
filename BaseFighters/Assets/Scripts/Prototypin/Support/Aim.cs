@@ -109,6 +109,9 @@ public class Aim : MonoBehaviour, ITFunc
         if(name == "SetTarget")
             SetTarget(value);
     }
+	
+	public void Func(List<string> args){
+    }
 
     public void SetTarget(Transform target){
         this.target = target;
@@ -117,4 +120,5 @@ public class Aim : MonoBehaviour, ITFunc
 
 public interface ITFunc{
     void Func(string funcName, Transform value);
+    void Func(List<string> args);
 }

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.09433961, g: 0.09433961, b: 0.09433961, a: 1}
+  m_Color: {r: 0.5340523, g: 0.8396226, b: 0.25743148, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -149,6 +149,7 @@ MonoBehaviour:
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}
@@ -156,6 +157,7 @@ MonoBehaviour:
   speed: 10.27
   normalize: 1
   moveSpace: 1
+  movingUpdater: {fileID: 0}
 --- !u!114 &-9179880505489586930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +194,7 @@ MonoBehaviour:
   store: {fileID: 0}
   autoFresh: 1
   skipTimes: 1
-  freshRate: 3
+  freshRate: 1
   logs:
     logOverlap: 0
     logTimed: 0
@@ -200,6 +202,7 @@ MonoBehaviour:
     logStart: 0
     logSpawn: 0
     logPreDestroy: 0
+    logCustom: 0
 --- !u!114 &1775440549095488415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,7 +221,9 @@ MonoBehaviour:
   objects:
     items: []
   scripts:
-    items: []
+    items:
+    - key: Move
+      script: {fileID: 7906082635139402400}
   tbuckets: []
   proxy: {fileID: 0}
 --- !u!114 &4971443065721843439
@@ -243,6 +248,8 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: a57b0d8df1c44324f8fded657d3ecaee, type: 2}
   overlapRules: {fileID: 0}
   timedRules: {fileID: 0}
+  activeLayers:
+    layers: []
 --- !u!114 &7225417086815267930
 MonoBehaviour:
   m_ObjectHideFlags: 0

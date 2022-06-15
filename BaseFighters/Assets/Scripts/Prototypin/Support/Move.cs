@@ -39,7 +39,7 @@ public class Move : MonoBehaviour, ITFunc
 	[Header("props")]
 	public InteractMoveProps movingUpdater;
 	
-	Vector3 correctionDir;
+	Vector3 correctedDir;
 	
     // Update is called once per frame
     void Update()
@@ -47,7 +47,7 @@ public class Move : MonoBehaviour, ITFunc
 		if(self == null)
 			self = transform;
 		
-        curSpeed = Time.deltaTime*speed;
+        curSpeed = speed;
 
         float hor = 0;
         float ver = 0;
@@ -93,9 +93,9 @@ public class Move : MonoBehaviour, ITFunc
         if((self.position + next).magnitude <= stopDist)
             next = Vector3.Lerp(Vector3.zero, next, 0.3f);
         
-		correctionDir = Vector2.Lerp(next, correctionDir, lerpSteps);
+		correctedDir = Vector2.Lerp(correctedDir, next, lerpSteps);
 		
-        self.Translate(correctionDir, moveSpace);
+        self.Translate(correctedDir * Time.deltaTime, moveSpace);
         correction*=1-correctionDecay;
         if(pong && correction.sqrMagnitude < 0.1f && move != preference)
             move = preference;
@@ -113,12 +113,25 @@ public class Move : MonoBehaviour, ITFunc
         Gizmos.color = Color.green;
         Gizmos.DrawRay(transform.position, transform.TransformDirection(move));   
         Gizmos.color = Color.yellow;
+        Gizmos.DrawRay(transform.position, correctedDir);  
+        Gizmos.color = Color.red; 
         Gizmos.DrawRay(transform.position, transform.TransformDirection(correction));   
     }
 
     public void Func(string name, Transform value){
         if(name == "SetTarget")
             SetTarget(value);
+    }
+	
+	public void Func(List<string> args){
+		string name =args[0];
+		string operation = args[1];
+		Debug.Log($"script {name} {operation}");
+        if(name == "MoveDir")
+		{
+			if(operation == "negate" || operation == "negative")
+				move = -move;
+		}
     }
 
     public void SetTarget(Transform target){

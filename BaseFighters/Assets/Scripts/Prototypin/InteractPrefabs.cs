@@ -20,6 +20,12 @@ public class InteractStored{
 		int.TryParse(value, out _value);
 		_svalue = value;
 	}}
+	
+	public void Serialize(string path){
+		var node = NodeManager.Node(path, key);
+		node.WriteAttrib(key, value);
+		node.WriteAttrib("s"+key, svalue);
+	}
 }
 
 [System.Serializable]
@@ -59,6 +65,10 @@ public class KeyTransform{
 	public string key;
 	public Transform prefab;
 
+	public void Serialize(string path){
+		NodeManager.Node(NodeManager.Path(path, "key"), key);
+		NodeManager.Node(NodeManager.Path(path, "prefab"), prefab.name);
+	}
 }
 
 
@@ -175,7 +185,7 @@ public class InteractScriptList{
 	}
 }
 
-[CreateAssetMenu]
+[CreateAssetMenu(menuName = "Interact/Prefabs")]
 public class InteractPrefabs:ScriptableObject{
 	public List<KeyTransform> items = new List<KeyTransform>();
 	
@@ -193,5 +203,13 @@ public class InteractPrefabs:ScriptableObject{
 			Debug.Log($"Prefab not found at key '{key}'", this);
 		}
 		return pref.GetComponent<SpriteRenderer>().color;
+	}
+	
+	public void Serialize(string path){
+		var listPath = NodeManager.Path(path, "items");
+		for (int i = 0; i < items.Count; i++){
+			var pathI = NodeManager.Path(listPath, i);
+			items[i].Serialize(pathI);
+		}
 	}
 }
