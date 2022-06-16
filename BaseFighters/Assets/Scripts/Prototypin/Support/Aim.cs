@@ -23,6 +23,7 @@ public class Aim : MonoBehaviour, ITFunc
     int trig = 0;
     float closeOff;
     float lastReset;
+	public Vector3 rotateDegrees;
 
     void OnEnable(){
 		if(self == null)
@@ -76,6 +77,7 @@ public class Aim : MonoBehaviour, ITFunc
 
             lastPos = (Vector2)self.position + targetDir;
             var targetRot = Quaternion.LookRotation(Vector3.forward, targetDir);
+			targetRot *= Quaternion.Euler(rotateDegrees);
             self.rotation = Quaternion.Slerp(self.rotation, targetRot, rSpeed/100f);
         }
     }

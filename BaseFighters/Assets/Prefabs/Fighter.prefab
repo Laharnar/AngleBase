@@ -184,6 +184,7 @@ MonoBehaviour:
   rngWeight: 0.4
   outRadius: 3.87
   rotationSpeed: 50
+  rotateDegrees: {x: 0, y: 0, z: 0}
 --- !u!114 &225920028382769630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,6 +546,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5787772065365347899}
+  - component: {fileID: 6684481073530251054}
   m_Layer: 0
   m_Name: DroneTarget
   m_TagString: Untagged
@@ -568,6 +570,28 @@ Transform:
   m_Father: {fileID: 225920028382769616}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6684481073530251054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496440612736237065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b38f54958baf3df42b0550c8d6250853, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 5787772065365347899}
+  mouse: 0
+  autoTrack: 0
+  target: {fileID: 0}
+  close: 2
+  damp: 0.25
+  rngWeight: 0.4
+  outRadius: 3
+  rotationSpeed: 50
+  rotateDegrees: {x: 0, y: 0, z: 5}
 --- !u!1001 &505545574576983031
 PrefabInstance:
   m_ObjectHideFlags: 0

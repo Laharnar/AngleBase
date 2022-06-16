@@ -3358,6 +3358,18 @@ PrefabInstance:
       propertyPath: GlobalObjectIdHash
       value: 1640131100
       objectReference: {fileID: 0}
+    - target: {fileID: 550456796398414826, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 550456796398414826, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 550456796398414826, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6112352938479817729, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_RootOrder
       value: 1
