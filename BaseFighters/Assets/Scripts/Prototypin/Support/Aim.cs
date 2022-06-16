@@ -120,7 +120,10 @@ public class Aim : MonoBehaviour, ITFunc
     }
 }
 
-public interface ITFunc{
-    void Func(string funcName, Transform value);
+public interface ITFuncStr{
     void Func(List<string> args);
+}
+
+public interface ITFunc:ITFuncStr{
+    void Func(string funcName, Transform value);
 }
