@@ -90,6 +90,7 @@ MonoBehaviour:
     logStart: 0
     logSpawn: 0
     logPreDestroy: 0
+    logCustom: 0
 --- !u!114 &225920028382769619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +146,9 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: 3fd58a8694c176b40a037ea12b74d1cc, type: 2}
   overlapRules: {fileID: 0}
   timedRules: {fileID: 0}
+  activeLayers:
+    layers: []
+  editorRefresh: 0
 --- !u!114 &225920028382769617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +207,7 @@ MonoBehaviour:
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 1
   preference: {x: 0, y: 0, z: 0}
@@ -210,6 +215,7 @@ MonoBehaviour:
   speed: 10
   normalize: 1
   moveSpace: 1
+  movingUpdater: {fileID: 0}
 --- !u!50 &8703175102245777617
 Rigidbody2D:
   serializedVersion: 4
@@ -684,6 +690,7 @@ MonoBehaviour:
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}
@@ -691,6 +698,7 @@ MonoBehaviour:
   speed: 8.16
   normalize: 1
   moveSpace: 0
+  movingUpdater: {fileID: 0}
 --- !u!1001 &3567247449494165886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -782,7 +790,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8336328681797843611, guid: 5469a3730e156f1448fccddd6b279e7a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 8336328681797843611, guid: 5469a3730e156f1448fccddd6b279e7a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -820,6 +828,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 5787772065365347899}
+    - target: {fileID: 8336328681797843685, guid: 5469a3730e156f1448fccddd6b279e7a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8336328681797843686, guid: 5469a3730e156f1448fccddd6b279e7a, type: 3}
       propertyPath: m_Name
       value: TravelDrone

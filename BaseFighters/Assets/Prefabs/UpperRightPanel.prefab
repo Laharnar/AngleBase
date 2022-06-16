@@ -354,18 +354,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1132965315011646349}
     m_Modifications:
-    - target: {fileID: 1680436273494309245, guid: 379353c1cd3be284da5b48a9f92ac513, type: 3}
-      propertyPath: names.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680436273494309245, guid: 379353c1cd3be284da5b48a9f92ac513, type: 3}
-      propertyPath: names.Array.data[0]
-      value: SpaceFight 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1680436273494309245, guid: 379353c1cd3be284da5b48a9f92ac513, type: 3}
-      propertyPath: names.Array.data[5]
-      value: SpaceFight 5
-      objectReference: {fileID: 0}
     - target: {fileID: 7275137511596789731, guid: 379353c1cd3be284da5b48a9f92ac513, type: 3}
       propertyPath: m_Name
       value: SceneLoader
