@@ -111,35 +111,6 @@ public class InteractTransformList:ListIter<KeyTransform> {
 	
 }
 
-/*[System.Serializable]
-public class InteractList<T>{
-	[SerializeField] List<KeyValue<T>> items = new List<KeyValue<T>>();
-	public int Count => items.Count;
-	public KeyValue<T> this[string index]{ 
-		get {
-			for (int i = 0; i < Count; i++){
-				if (items[i].key == index)
-					return items[i];
-			}
-			return null;
-		}
-		set{
-			for (int i = 0; i < Count; i++){
-				if (items[i].key == index)
-					items[i] = value;
-			}
-		}
-	}
-	
-	public void Init(string prop, T defaultValue){
-		for (int i = 0; i < Count; i++){
-			if (items[i].key == prop)
-				return;
-		}
-		items.Add(new KeyValue<T>(){ key = prop, script = defaultValue});
-	}
-}*/
-
 
 [System.Serializable]
 public class KeyScript : IKeyValueBase{

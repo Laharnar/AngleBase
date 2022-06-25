@@ -138,14 +138,14 @@ public class InteractState:ComponentMono{
 			Debug.Log(interactions.Count + " same time:"+ (lastTime == Time.time));
 		#endif
 
-		if (interactions.Count == 0) // prevents tick overriding overlap
+		if (interactions.Count == 0) // prevents tick overriding
 			return;
-        if(timeBound && lastTime == Time.time)
+        if(timeBound && lastTime == Time.time) // prevents overlapping from multiple calls
             return;
 		var last = state;
 	
 		// statics, trigger on self
-		actions = Action(state, x.state, statics);
+		/*actions = Action(state, x.state, statics);
 		Fill(actions, x);
 		pickup.Trigger(x.state, statics, log);
 		Fill(actions, null);
@@ -153,7 +153,9 @@ public class InteractState:ComponentMono{
 		x.actions = Action(x.state, last, x.statics);
 		Fill(x.actions, this);
 		x.pickup.Trigger(last, x.statics, log);
-		Fill(x.actions, null);
+		Fill(x.actions, null);*/
+		if(statics.Count > 0)
+			Debug.LogError("Errorrrr Obsolete");
 		
 		// prefs, trigger on both, or ""="any" on self
 		var any = Action("", "", interactions);
