@@ -51,6 +51,7 @@ MonoBehaviour:
   wasdIn: 1
   raw: 0
   stopOnLoss: 1
+  autoTargetPlayer: 0
   target: {fileID: 0}
   stopDist: 0
   pong: 0
@@ -87,6 +88,7 @@ MonoBehaviour:
   rngWeight: 0.4
   outRadius: 3.87
   rotationSpeed: 25
+  rotateDegrees: {x: 0, y: 0, z: 0}
 --- !u!114 &1507752186519709187
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -152,6 +154,7 @@ MonoBehaviour:
   wasdIn: 0
   raw: 0
   stopOnLoss: 1
+  autoTargetPlayer: 0
   target: {fileID: 0}
   stopDist: 0
   pong: 0
@@ -188,6 +191,7 @@ MonoBehaviour:
   rngWeight: 0.04
   outRadius: 1.71
   rotationSpeed: 43.79
+  rotateDegrees: {x: 0, y: 0, z: 0}
 --- !u!1 &6544265644093117725
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,31 +446,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6337076556036527019, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.b
-      value: 0.6792453
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6337076556036527019, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.g
-      value: 0.562709
+      value: 0.77565557
       objectReference: {fileID: 0}
     - target: {fileID: 6337076556036527019, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.r
-      value: 0.1954432
+      value: 0.08018869
       objectReference: {fileID: 0}
     - target: {fileID: 6337076556040234182, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.b
-      value: 0.6792453
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6337076556040234182, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.g
-      value: 0.562709
+      value: 0.77565557
       objectReference: {fileID: 0}
     - target: {fileID: 6337076556040234182, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
       propertyPath: m_Color.r
-      value: 0.1954432
+      value: 0.08018869
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6112352938479817742, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
     - {fileID: 6112352938479817743, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+    - {fileID: 6384621915303394007, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
+    - {fileID: 6225856364320358604, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
 --- !u!1 &1474794507411198435 stripped
 GameObject:
@@ -504,32 +510,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6112352938479817734, guid: 02b4ba31b76bdf347b02ebbca07b928c, type: 3}
   m_PrefabInstance: {fileID: 7018252625657751605}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &-5126717209859577653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3870464586057514035}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SyncPositionX: 1
-  SyncPositionY: 1
-  SyncPositionZ: 1
-  SyncRotAngleX: 1
-  SyncRotAngleY: 1
-  SyncRotAngleZ: 1
-  SyncScaleX: 1
-  SyncScaleY: 1
-  SyncScaleZ: 1
-  PositionThreshold: 0.001
-  RotAngleThreshold: 0.01
-  ScaleThreshold: 0.01
-  InLocalSpace: 0
-  Interpolate: 1
 --- !u!114 &-505912258550796676
 MonoBehaviour:
   m_ObjectHideFlags: 0

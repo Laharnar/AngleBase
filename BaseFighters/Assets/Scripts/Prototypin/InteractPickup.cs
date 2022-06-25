@@ -22,7 +22,7 @@ public class InteractPickup:MonoBehaviour{
 		}
 	}
 
-    public void Trigger(string transitionTo, List<InteractModule.InteractRules> interactions, bool log = false){
+    public void Trigger(string transitionTo, List<InteractRules> interactions, bool log = false){
 		foreach (var action in states.actions){
 			if(action == null)
 				continue;
@@ -54,7 +54,8 @@ public class InteractPickup:MonoBehaviour{
 			}else{ 
 				codes = action.elseCodes;
 			}
-			if(codes!= null){
+			if (codes!= null && codes.Count > 0) {
+				Interact.ONE.Run(codes, gameObject);
 				for (int i = 0; i < codes.Count; i++)
 					Handle(codes[i], action, log);
 			}
@@ -62,7 +63,7 @@ public class InteractPickup:MonoBehaviour{
 		states.actions.Clear();
     }
 	
-    public static string Transition(string from, string to, List<InteractModule.InteractRules> interactions){
+    public static string Transition(string from, string to, List<InteractRules> interactions){
         if(to == "" || from == "")
             return from;
         for (int i = 0; i< interactions.Count; i++){

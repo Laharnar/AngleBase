@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2991541058345230527, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4267618363878734361, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_Color.b
       value: 0.11320752
@@ -30,6 +34,14 @@ PrefabInstance:
     - target: {fileID: 4267618365748694487, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_Color.r
       value: 0.11320752
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428473771957004077, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428473771957004077, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004080, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: stored.items.Array.size
@@ -89,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.71
+      value: -8.81
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.15
+      value: -3.18
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -129,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004085, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_Name
-      value: Base_player (1)
+      value: Base_player
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004086, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: autoLoadGlobals
@@ -182,6 +194,7 @@ MonoBehaviour:
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}

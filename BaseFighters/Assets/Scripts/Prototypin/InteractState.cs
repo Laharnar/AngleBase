@@ -5,38 +5,15 @@ using UnityEngine;
 
 // use for network
 public interface IInteractTunnel{
-	void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log, bool timeBound);
-}
-
-
-public class ComponentMono:MonoBehaviour{
-	protected SpriteRenderer sprite;
-    public Collider2D _collider;
-
-	protected virtual void Start(){
-		sprite = transform.GetComponent<SpriteRenderer>();
-        if(_collider == null) _collider = GetComponent<Collider2D>();
-	}
-}
-
-[System.Serializable]
-public class InteractLogs{
-
-	public bool logOverlap = false;
-	public bool logTimed = false;
-	public bool logTick = false;
-	public bool logStart = false;
-	public bool logSpawn = false;
-	public bool logPreDestroy = false;
-	public bool logCustom = false;
+	void Tick(InteractState x, List<InteractRules> interactions, bool log, bool timeBound);
 }
 
 public class InteractState:ComponentMono{
 
-    public string state;
+	public string state;
 
 	[Header("Any mode")]
-	public List<InteractModule.InteractRules> statics = new List<InteractModule.InteractRules>();
+	public List<InteractRules> statics = new List<InteractRules>();
 	
 	[Header("Misc")]
 	[SerializeField] InteractPrefabs color;
@@ -56,7 +33,7 @@ public class InteractState:ComponentMono{
 	internal InteractState spawnBy;
 	IInteractTunnel tunnel;
 	
-	Action<InteractState, List<InteractModule.InteractRules>, bool, bool> TickE;
+	Action<InteractState, List<InteractRules>, bool, bool> TickE;
 
 	bool first = false;
 	float tickTime = 0;
@@ -155,9 +132,12 @@ public class InteractState:ComponentMono{
     }
 	
 	// Prefer other public functions. This is to be used IInteractTunnel.
-	public void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log=false, bool timeBound = true){
+	public void Tick(InteractState x, List<InteractRules> interactions, bool log=false, bool timeBound = true){
+		#if UNITY_EDITOR
 		if (log)
 			Debug.Log(interactions.Count + " same time:"+ (lastTime == Time.time));
+		#endif
+
 		if (interactions.Count == 0) // prevents tick overriding overlap
 			return;
         if(timeBound && lastTime == Time.time)
@@ -209,7 +189,7 @@ public class InteractState:ComponentMono{
 			sprite.color = color.FindColor(state);
 	}
 
- 	public static List<InteractAction> Action(string from, string to, List<InteractModule.InteractRules> interactions){
+ 	public static List<InteractAction> Action(string from, string to, List<InteractRules> interactions){
 		List<InteractAction> actions = new List<InteractAction>();
         for (int i = 0; i< interactions.Count; i++){
 			if(!interactions[i].enabled)
@@ -227,4 +207,29 @@ public class InteractState:ComponentMono{
 			action.self = this;
 		}
 	}
+}
+
+public class ComponentMono : MonoBehaviour
+{
+	protected SpriteRenderer sprite;
+	public Collider2D _collider;
+
+	protected virtual void Start()
+	{
+		sprite = transform.GetComponent<SpriteRenderer>();
+		if (_collider == null) _collider = GetComponent<Collider2D>();
+	}
+}
+
+[System.Serializable]
+public class InteractLogs
+{
+
+	public bool logOverlap = false;
+	public bool logTimed = false;
+	public bool logTick = false;
+	public bool logStart = false;
+	public bool logSpawn = false;
+	public bool logPreDestroy = false;
+	public bool logCustom = false;
 }

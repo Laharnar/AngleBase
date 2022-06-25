@@ -22,51 +22,82 @@ public class InteractStorage:MonoBehaviour{
 	internal InteractState state;
 	public static InteractStorage global;
 
-	void Awake(){
+
+
+	static object TARGET => String.Intern("target");
+	static object PARENT => String.Intern("parent");
+    static object PARENT2 => String.Intern("parentparent");
+	static object PARENTANY => String.Intern("anyparent");
+	static object SPAWNBY => String.Intern("spawnBy");
+	static object SCRIPT => String.Intern("script");
+	static object OBJ => String.Intern("obj");
+	static object SELF => String.Intern("self");
+	static object NULL => String.Intern("null");
+
+	void Awake()
+	{
 		state = GetComponent<InteractState>();
-		if(key == "globals" || key =="global"){
+		if (key == "globals" || key == "global")
+		{
 			global = this;
 		}
 	}
 
+	internal void Exe(string code)
+	{
+		//Activate(code, )
+		Debug.Log($"Executing {code}", this );
+	}
+
 	///Finds correct storage based on source ("self", "target", "parent", "script+name", "obj+name", "anyparent", "parent")
 	static InteractStorage Redirect(string source, InteractAction action, List<InteractStorage> storages = null, InteractStorage defValue = null){
-		var flexSource = source;
-		if(source == "self") // else is important here
+		var defSource = source;
+		var srcObj = (object)String.Intern(source);
+		if(srcObj == SELF) // else is important here
 			return action.self.store;
-		else if(source == "target"){
+		else if(srcObj == TARGET){
 			storages = action.target.pickup.storages;
-			flexSource = "self"; // flexSelf
+			defSource = (string)SELF; // flexSelf
+		}else if(srcObj == NULL){
+			return null;
 		}
-		else if(source == "parent"){
-			storages = action.self.transform.parent.GetComponent<InteractState>().pickup.storages;
-			flexSource = "self"; // flexSelf
+		else if(srcObj == PARENT){
+			if(action.self.transform.parent)
+				storages = action.self.transform.parent.GetComponent<InteractState>().pickup.storages;
+			defSource = (string)SELF; // flexSelf
 		}
-		else if(source == "parentparent"){
+		else if(srcObj == PARENT2){
+			if(action.self.transform.parent && action.self.transform.parent.parent)
 			storages = action.self.transform.parent.parent.GetComponent<InteractState>().pickup.storages;
-			flexSource = "self"; // flexSelf
+			defSource = (string)SELF; // flexSelf
 		}
-		else if(source == "anyparent"){
-			storages = action.self.transform.parent.GetComponentInParent<InteractState>().pickup.storages;
-			flexSource = "self"; // flexSelf
+		else if(srcObj == PARENTANY){
+			if(action.self.transform.parent)
+				storages = action.self.transform.parent.GetComponentInParent<InteractState>().pickup.storages;
+			defSource = (string)SELF; // flexSelf
 		}
-		else if(source == "spawnBy"){
+		else if(srcObj == SPAWNBY){
 			return action.self.spawnBy.store;
 		}else if(source.Contains('+')){
 			var items = source.Split("+");
-			if(items[0] == "script")
+#pragma warning disable CS0252 
+			if (SCRIPT == string.Intern(items[0]))
 				return (InteractStorage)action.self.store.scripts[items[1]].script;
-			else if(items[0] == "obj")
+#pragma warning restore CS0252
+#pragma warning disable CS0253
+			else if (string.Intern(items[0]) == OBJ)
 				return action.self.store.objects[items[1]].prefab.GetComponent<InteractStorage>();
+#pragma warning restore CS0253
 		}
-		
-		if(storages != null){
-			var x = Find(flexSource, storages, action.self.transform);
+
+		// is this just base filter if everything else fails?
+		if (storages != null){
+			var x = Find(defSource, storages, action.self.transform);
 			if(x != null)
 				return x;
 		}
 		if(defValue != null) // if it's null, expect null to be allowed
-			Debug.Log("No matches, using object of storage. "+flexSource + " -> "+defValue, action.self);
+			Debug.Log("No matches, using object of storage. "+defSource + " -> "+defValue, action.self);
 		return defValue; // most unsafe
 	}
 	
@@ -80,7 +111,7 @@ public class InteractStorage:MonoBehaviour{
 		var props = stored;
 		props.Init(prop, 0);
 
-		int res = 0;
+		int res;
 		if(int.TryParse(value, out res))
 			props[prop].value = res;
 		props[prop].svalue = value.ToString();
@@ -345,7 +376,7 @@ public class InteractStorage:MonoBehaviour{
 		success = true;
 		if(refs.Count == 0) return false;
 		if(spawn){
-			if(refs.Count < 3){
+			if(refs.Count < 2){
 				Debug.Log($"Spawn err: {code}. unknown. last mode: {mode}. found: {refs.Count}");
 				return success = false;
 			}
@@ -958,40 +989,4 @@ public class InteractStorage:MonoBehaviour{
 		return null;
 	}
 
-	[System.Serializable]
-	public class InteractStorageList{
-		[SerializeField] List<InteractStored> items = new List<InteractStored>();
-		public int Count => items.Count;
-		public InteractStored this[string index]{ 
-			get {
-				for (int i = 0; i < Count; i++){
-					if (items[i].key == index)
-						return items[i];
-				}
-				return null;
-			}
-			set{
-				for (int i = 0; i < Count; i++){
-					if (items[i].key == index)
-						items[i] = value;
-				}
-			}
-		}
-		
-		public void Init(string prop, int defaultValue = 0){
-			for (int i = 0; i < Count; i++){
-				if (items[i].key == prop)
-					return;
-			}
-			items.Add(new InteractStored(){ key = prop, value = defaultValue, svalue = defaultValue.ToString()});
-		}
-		
-		public void InitStr(string prop, string defaultValue){
-			for (int i = 0; i < Count; i++){
-				if (items[i].key == prop)
-					return;
-			}
-			items.Add(new InteractStored(){ key = prop, value = 0, svalue = defaultValue.ToString()});
-		}
-	}
 }

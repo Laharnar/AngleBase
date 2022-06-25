@@ -25,14 +25,14 @@ public class InteractWindow:EditorWindow{
     static void Init()
     {
         // Get existing open window or if none, make a new one:
-        InteractWindow window = (InteractWindow)EditorWindow.GetWindow(typeof(InteractWindow));
+        InteractWindow window = (InteractWindow)GetWindow(typeof(InteractWindow));
         window.Show();
     }
 
-    bool ContainsSearch(List<string> list, string search){
-        if(searchLine!= ""){
+    static bool ContainsSearch(List<string> list, string search){
+        if(search != ""){
             for (int i = 0; i < list.Count; i++){
-                if(list[i].ToLower().Contains(searchLine)) 
+                if(list[i].ToLower().Contains(search)) 
                     return true;
             } 
         }

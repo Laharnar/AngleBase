@@ -1,7 +1,9 @@
 
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
+[System.Serializable]
 public class Node{
 	Dictionary<string, object> dict = new Dictionary<string, object>();
 	
@@ -15,6 +17,7 @@ public class Node{
 }
 
 public class NodeManager{
+
 	static Dictionary<string, Node> dict = new Dictionary<string, Node>();
 	
 	public static void Reset(){

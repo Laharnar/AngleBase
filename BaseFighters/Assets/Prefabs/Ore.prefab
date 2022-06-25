@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 696614055642600643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.75, y: 0.75, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 696614055737668931}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2135585597343286014, guid: 5aa8b770bc43046bc8d993d0d5b7f4a5, type: 3}
-  m_Color: {r: 0.16981131, g: 0.106532566, b: 0.106532566, a: 1}
+  m_Color: {r: 0.254717, g: 0.15979888, b: 0.15979888, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -147,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.75, y: 0.75}
   m_EdgeRadius: 0
 --- !u!114 &696614055737668929
 MonoBehaviour:
@@ -192,6 +192,8 @@ MonoBehaviour:
     logTick: 0
     logStart: 0
     logSpawn: 0
+    logPreDestroy: 0
+    logCustom: 0
 --- !u!114 &696614055737668959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,6 +240,9 @@ MonoBehaviour:
     rules: {fileID: 11400000, guid: 3692f8244e12fa24eba598cab17bd451, type: 2}
   overlapRules: {fileID: 0}
   timedRules: {fileID: 0}
+  activeLayers:
+    layers: []
+  editorRefresh: 0
 --- !u!114 &696614055737668957
 MonoBehaviour:
   m_ObjectHideFlags: 0

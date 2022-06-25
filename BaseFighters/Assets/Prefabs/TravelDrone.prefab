@@ -105,7 +105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4886364297324029152}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
@@ -121,6 +121,7 @@ MonoBehaviour:
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 0.77
   correctionDecay: 0.16
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}
@@ -128,3 +129,4 @@ MonoBehaviour:
   speed: 3
   normalize: 1
   moveSpace: 0
+  movingUpdater: {fileID: 0}

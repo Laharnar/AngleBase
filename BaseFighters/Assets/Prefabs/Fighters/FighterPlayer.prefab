@@ -50,12 +50,14 @@ MonoBehaviour:
   wasdIn: 0
   raw: 0
   stopOnLoss: 1
+  autoTargetPlayer: 0
   target: {fileID: 0}
   stopDist: 0
   pong: 0
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 1
   preference: {x: 0, y: 0, z: 0}
@@ -85,6 +87,7 @@ MonoBehaviour:
   rngWeight: 4.3
   outRadius: 5.8
   rotationSpeed: 37.41
+  rotateDegrees: {x: 0, y: 0, z: 0}
 --- !u!1 &1209364370
 GameObject:
   m_ObjectHideFlags: 0
@@ -135,12 +138,14 @@ MonoBehaviour:
   wasdIn: 1
   raw: 0
   stopOnLoss: 1
+  autoTargetPlayer: 0
   target: {fileID: 0}
   stopDist: 0
   pong: 0
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 0
   quadraticAccel: 1
   preference: {x: 0, y: 0, z: 0}
@@ -170,6 +175,7 @@ MonoBehaviour:
   rngWeight: 0.4
   outRadius: 3.87
   rotationSpeed: 50
+  rotateDegrees: {x: 0, y: 0, z: 0}
 --- !u!1001 &4564371130257313991
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,6 +183,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7037687319057030765, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 951099334
+      objectReference: {fileID: 0}
     - target: {fileID: 44245309, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Size.y
       value: 0.3465482
@@ -191,15 +201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.0599995
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.7099999
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.058253422
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769616, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_LocalRotation.w
@@ -229,6 +239,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769618, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: boxes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 225920028382769618, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: boxes.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: bd134a072314a074fb311c881c28f4b5, type: 2}
     - target: {fileID: 225920028382769618, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: triggerRules.Array.size
       value: 3
@@ -279,7 +297,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769618, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: layers.layers.Array.data[1].enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769618, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: layers.layers.Array.data[2].enabled
@@ -435,7 +453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_Name
-      value: FighterPlayer
+      value: FigherAlly
       objectReference: {fileID: 0}
     - target: {fileID: 225920028382769623, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: m_TagString
@@ -553,6 +571,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 7999988722287173372}
+    - target: {fileID: 1536571723541901197, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3363111493976457546, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
       propertyPath: triggerRules.Array.data[2].rules
       value: 
@@ -601,6 +623,14 @@ PrefabInstance:
       propertyPath: triggerRules.Array.data[2].rules
       value: 
       objectReference: {fileID: 11400000, guid: 2676ceb405789a74cb0b08a0b51565e3, type: 2}
+    - target: {fileID: 8703175102245777617, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8703175102245777617, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 225920028382769631, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
     - {fileID: 225920028382769630, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}
@@ -631,6 +661,20 @@ MonoBehaviour:
   AlwaysReplicateAsRoot: 0
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+--- !u!114 &6456028040663982371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4356465514255458576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9cd4547034a1b45b32dce1e6f14983, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  module: {fileID: 0}
+  isPlayer: 0
 --- !u!114 &4356465514255458580 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 225920028382769619, guid: 8ccbf3ef93788534ab11383fe2005805, type: 3}

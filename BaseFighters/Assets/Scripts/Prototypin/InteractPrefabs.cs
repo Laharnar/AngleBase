@@ -6,32 +6,36 @@ using UnityEngine.Serialization;
 
 
 [System.Serializable]
-public class InteractStored{
-	public string key;
-	[FormerlySerializedAs("value")]
-	public int _value;
-	[FormerlySerializedAs("svalue")]
-	public string _svalue;
-	public int value { get => _value; set {
-		_value = value;
-		_svalue = value.ToString();
-	}}
-	public string svalue { get => _svalue; set {
-		int.TryParse(value, out _value);
-		_svalue = value;
-	}}
-	
-	public void Serialize(string path){
-		var node = NodeManager.Node(path, key);
-		node.WriteAttrib(key, value);
-		node.WriteAttrib("s"+key, svalue);
+public class InteractStorageList:ListIter<InteractStored>
+{
+	public void Init(string prop, int defaultValue = 0)
+	{
+		for (int i = 0; i < Count; i++)
+		{
+			if (items[i].key == prop)
+				return;
+		}
+		items.Add(new InteractStored() { key = prop, value = defaultValue, svalue = defaultValue.ToString() });
+	}
+
+	public void InitStr(string prop, string defaultValue)
+	{
+		for (int i = 0; i < Count; i++)
+		{
+			if (items[i].key == prop)
+				return;
+		}
+		items.Add(new InteractStored() { key = prop, value = 0, svalue = defaultValue.ToString() });
 	}
 }
 
 [System.Serializable]
-public class TransformsList{
+public class TransformsList : IKeyValueBase{
 	public string key;
 	public List<Transform> transforms;
+
+	public string Key => key;
+	public object Value => transforms;
 
 	public int ClearNulls(){
 		int nullCount = 0;
@@ -61,9 +65,12 @@ public static class FindHelper{
 }
 
 [System.Serializable]
-public class KeyTransform{
+public class KeyTransform : IKeyValueBase{
 	public string key;
 	public Transform prefab;
+
+	public string Key => key;
+	public object Value => prefab;
 
 	public void Serialize(string path){
 		NodeManager.Node(NodeManager.Path(path, "key"), key);
@@ -71,28 +78,18 @@ public class KeyTransform{
 	}
 }
 
+[System.Serializable]
+public class KeyValue<T> : IKeyValueBase{
+	public string key;
+	public T script;
+
+	public string Key => key;
+	public object Value => script;
+}
+
 
 [System.Serializable]
-public class InteractTransformList{
-	[SerializeField] List<KeyTransform> items = new List<KeyTransform>();
-	public int Count => items.Count;
-	
-	///Null if missing
-	public KeyTransform this[string index]{ 
-		get {
-			for (int i = 0; i < Count; i++){
-				if (items[i].key == index)
-					return items[i];
-			}
-			return null;
-		}
-		set{
-			for (int i = 0; i < Count; i++){
-				if (items[i].key == index)
-					items[i] = value;
-			}
-		}
-	}
+public class InteractTransformList:ListIter<KeyTransform> {
 	
 	public void Init(string prop, Transform defaultValue){
 		for (int i = 0; i < Count; i++){
@@ -114,13 +111,7 @@ public class InteractTransformList{
 	
 }
 
-[System.Serializable]
-public class KeyValue<T>{
-	public string key;
-	public T script;
-}
-
-[System.Serializable]
+/*[System.Serializable]
 public class InteractList<T>{
 	[SerializeField] List<KeyValue<T>> items = new List<KeyValue<T>>();
 	public int Count => items.Count;
@@ -147,34 +138,46 @@ public class InteractList<T>{
 		}
 		items.Add(new KeyValue<T>(){ key = prop, script = defaultValue});
 	}
-}
+}*/
 
 
 [System.Serializable]
-public class KeyScript{
+public class KeyScript : IKeyValueBase{
 	public string key;
 	public Component script;
+
+	public string Key => key;
+	public object Value => script;
+}
+
+public interface IKeyValueBase{
+	string Key { get; } // public string Key => key;
+	object Value { get; } // public object Value => value;
 }
 
 [System.Serializable]
-public class InteractScriptList{
-	[SerializeField] List<KeyScript> items = new List<KeyScript>();
+public class ListIter<T> where T: IKeyValueBase{
+	[SerializeField] protected List<T> items = new List<T>();
 	public int Count => items.Count;
-	public KeyScript this[string index]{ 
+	public T this[string index]{
 		get {
 			for (int i = 0; i < Count; i++){
-				if (items[i].key == index)
+				if (items[i].Key == index)
 					return items[i];
 			}
-			return null;
+			return default;
 		}
 		set{
 			for (int i = 0; i < Count; i++){
-				if (items[i].key == index)
+				if (items[i].Key == index)
 					items[i] = value;
 			}
 		}
 	}
+}
+
+[System.Serializable]
+public class InteractScriptList:ListIter<KeyScript> {
 	
 	public void Init(string prop, Component defaultValue){
 		for (int i = 0; i < Count; i++){

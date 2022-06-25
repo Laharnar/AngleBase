@@ -13,6 +13,7 @@ public class Move : MonoBehaviour, ITFunc
 
     [Header("mode 2 - target")]
     public bool stopOnLoss=true;
+	public bool autoTargetPlayer = false;
     public Transform target;
     public float stopDist = 0;
     bool hadTarget = false;
@@ -40,6 +41,12 @@ public class Move : MonoBehaviour, ITFunc
 	public InteractMoveProps movingUpdater;
 	
 	Vector3 correctedDir;
+	
+	void Start(){
+		if(autoTargetPlayer){
+			target = GameObject.FindGameObjectWithTag("Player").transform;
+		}
+	}
 	
     // Update is called once per frame
     void Update()

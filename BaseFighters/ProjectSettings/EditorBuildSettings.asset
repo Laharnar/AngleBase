@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/netOnlyPlayer.unity
     guid: eb2a08b15441ab44eab9f254c23e01c8
   - enabled: 1
+    path: Assets/Scenes/SpaceModeSelector.unity
+    guid: c59a75d374f77824cb4cea57c33c9497
+  - enabled: 1
     path: Assets/Scenes/SpaceLevelSelector.unity
     guid: 605de564dbfa6a84f8535db1359f7bf0
   - enabled: 1
@@ -29,6 +32,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SpaceFight 5.unity
     guid: d90089a684f204140b4a7e4bf79433bc
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 6.unity
+    guid: 659d61884fe83054a9f764ea43f7db27
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 7.unity
+    guid: 948dd139aa1d94a488f89fc676425053
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 8.unity
+    guid: 82b205f7e726f834788d0089d2928b66
+  - enabled: 1
+    path: Assets/Scenes/SpaceFight 9.unity
+    guid: d8ebcd24d2ccbc24bb31a13083c3be50
   - enabled: 1
     path: Assets/Photon/PhotonChat/Demos/DemoChat/DemoChat-Scene.unity
     guid: ec07267f6a28fb044ac89845274e79af

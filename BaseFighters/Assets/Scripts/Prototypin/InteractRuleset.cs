@@ -7,8 +7,7 @@ using Unity.VisualScripting;
 [RenamedFrom("InteractPref")]
 public class InteractRuleset : ScriptableObject
 {
-    public List<InteractModule.InteractRules> interactions = new List<InteractModule.InteractRules>();
-	
+    public List<InteractRules> interactions = new List<InteractRules>();
 	
 	public void Serialize(string path){
 		var rulePath = NodeManager.Path(path, name);

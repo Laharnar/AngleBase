@@ -13,9 +13,11 @@ public class NetworkSpawner : NetworkBehaviour, IInteractTunnel
 		always = always || !GameObject.FindObjectOfType<NetworkManager>();
 	}
 	
-    public void Tick(InteractState x, List<InteractModule.InteractRules> interactions, bool log, bool timeBound){
-		if(IsServer || always || IsLocalPlayer)
+    public void Tick(InteractState x, List<InteractRules> interactions, bool log, bool timeBound){
+		if (IsOwner) {
+			//if(IsServer || always || IsLocalPlayer)
 			state.Tick(x, interactions, log, timeBound);
+		}
 	}
 	
 	public void Postspawn(GameObject obj){

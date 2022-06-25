@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2991541058345230527, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5428473770409707220, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_Color.b
       value: 0
@@ -19,6 +23,10 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0.8962264
       objectReference: {fileID: 0}
+    - target: {fileID: 5428473770575038288, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[1].rules
+      value: 
+      objectReference: {fileID: 11400000, guid: 8da2e9184ef1a5248a426686cd7a14e6, type: 2}
     - target: {fileID: 5428473770575038290, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: logs.logSpawn
       value: 0
@@ -93,11 +101,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.77
+      value: -13.89
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.6
+      value: 21.06
       objectReference: {fileID: 0}
     - target: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: m_LocalPosition.z
@@ -163,10 +171,22 @@ PrefabInstance:
       propertyPath: logs.logSpawn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6570552873056254658, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[1].rules
+      value: 
+      objectReference: {fileID: 11400000, guid: 8da2e9184ef1a5248a426686cd7a14e6, type: 2}
     - target: {fileID: 6570552873175483165, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: logs.logSpawn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6570552873175483167, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[1].rules
+      value: 
+      objectReference: {fileID: 11400000, guid: 8da2e9184ef1a5248a426686cd7a14e6, type: 2}
+    - target: {fileID: 6570552874508661969, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
+      propertyPath: triggerRules.Array.data[1].rules
+      value: 
+      objectReference: {fileID: 11400000, guid: 8da2e9184ef1a5248a426686cd7a14e6, type: 2}
     - target: {fileID: 6570552874508661971, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
       propertyPath: logs.logSpawn
       value: 0
@@ -216,16 +236,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c92c63fb3f1d7dc459c6241af8124f8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  self: {fileID: 0}
   networked: 1
   wasdIn: 0
   raw: 0
   stopOnLoss: 1
+  autoTargetPlayer: 0
   target: {fileID: 0}
   stopDist: 0
   pong: 0
   correction: {x: 0, y: 0, z: 0}
   correctionMult: 1
   correctionDecay: 0
+  lerpSteps: 1
   flatZ: 1
   quadraticAccel: 0
   preference: {x: 0, y: 0, z: 0}
@@ -233,6 +256,7 @@ MonoBehaviour:
   speed: 0.75
   normalize: 1
   moveSpace: 0
+  movingUpdater: {fileID: 0}
 --- !u!4 &7993954727808225709 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5428473771957004084, guid: 0e7e6d6521bb565438027a499522721d, type: 3}
